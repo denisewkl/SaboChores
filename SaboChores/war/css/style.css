@@ -49,7 +49,7 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.5em;
+  line-height: 1.2em;
   background: #95c9c3 url(../img/grunge.png) repeat-x center 150px;
 }
 body a {
@@ -88,6 +88,10 @@ h5 {
 }
 h6 {
   font-size: 14px;
+  text-decoration:underline 
+}
+h7 {
+  font-size: 12px;
 }
 /* HEADER ----------------------------------------------------*/header {
   background: url(../img/header.png);
@@ -186,12 +190,12 @@ nav {
   float: left;
 }
 /* MAIN ----------------------------------------------------*/#main .wrapper {
-  margin-top: 60px;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   min-height: 500px;
   color: #444;
-  font-size: 16px;
-  line-height: 1.5em;
+  font-size: 12px;
+  line-height: 1.2em;
 }
 /* HEALINE ----------------------------------------------------*/.headline {
   color: #cb5432;
@@ -208,8 +212,8 @@ nav {
   margin-left: -20px;
 }
 .feature li {
+background: #f3e4c8;
   position: relative;
-  background: #f3e4c8;
   width: 300px;
   margin-bottom: 50px;
   margin-left: 20px;
@@ -663,4 +667,87 @@ footer #footer-bottom {
 }
 .widget-cols > li.fourth-col {
   margin-right: 0px;
+}
+
+table, th, td
+{
+
+font-size:13px;
+font-family: "Calibri bold";
+
+}
+
+
+ input[type="submit"],
+ input[type="submit"],
+ input[type="button"],
+ input[type="button"] {
+  width: auto;
+  color: #444;
+  font-size: 11px;
+  background: #f3e4c8;
+  color: #cb5432;
+  padding: 4px 15px;
+  box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+input[type="submit"]:hover,
+ input[type="submit"]:hover,
+ input[type="button"]:hover,
+ input[type="button"]:hover {
+  -webkit-transform: translate(0px, -5px);
+  -moz-transform: translate(0px, -5px);
+  -o-transform: translate(0px, -5px);
+  transform: translate(0px, -5px);
+}
+ input#submit,
+ input#submit {
+  margin-top: 5px;
+}
+
+img {
+ display: block;
+ float: left;
+ margin-right: 10px;
+}
+
+ .FAQ {
+	cursor: hand;
+	cursor: pointer;
+	border: 1px solid #fff;
+	width: 100%;
+	margin-top: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	color:#333
+}
+ .ANS { 
+	display:none;
+	margin-top:7px;
+}
+
+#overlay_form,
+#overlay_form2{
+position: absolute;
+border: 5px solid gray;
+padding: 10px;
+background: white;
+width: 200px;
+height: 120px;
+margin-top:-80px;
+}
+
+#overlay_form_password{
+position: absolute;
+border: 5px solid gray;
+padding: 10px;
+background: white;
+width: 200px;
+height: 120px;
+margin-top:-250px;
 }
