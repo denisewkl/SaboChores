@@ -33,22 +33,23 @@
 
 
 <!-- pop up form for sabo tix -->
-<form id="overlay_form" style="display:none">
+<form id="overlay_form" style="display:none" action = "/shopcheck">
 <h6>Sabo Tickets</h6>
 <label>How many tickets?</label><br>
-<input type="number" name="points" id="points" min="0" max="20" step="1" value="0"><br />
+<input type="number" name="sabopoints" id="points" min="0" max="20" step="1" value="0"><br />
+<input type = "hidden" name = "type" value = "sabo" />
 
-<input type="button" value="Buy" />
+<input type="Submit" value="Buy" />
 <a href="#" id="close" >Close</a>
 </form>
 
 	 <!-- pop up form for $$ tix -->
-<form id="overlay_form2" style="display:none">
+<form id="overlay_form2" style="display:none" action = "/shopcheck">
 <h6>$$ Tickets</h6>
 <label>How many tickets?</label><br>
-<input type="number" name="points" id="points" min="0" max="20" step="1" value="0"><br />
-
-<input type="button" value="Buy" />
+<input type="number" name="moneypoints" id="points" min="0" max="20" step="1" value="0"><br />
+<input type = "hidden" name = "type" value = "money" />
+<input type="Submit" value="Buy" />
 <a href="#" id="close2" >Close</a>
 </form>
 

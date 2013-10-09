@@ -7,6 +7,18 @@
 		<servlet-name>SaboChores</servlet-name>
 		<url-pattern>/sabochores</url-pattern>
 	</servlet-mapping>
+	
+
+	<servlet>
+		<servlet-name>Servlet_ShopCheck</servlet-name>
+		<servlet-class>controller.Servlet_ShopCheck</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet_ShopCheck</servlet-name>
+		<url-pattern>/shopcheck</url-pattern>
+	</servlet-mapping>
+	
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

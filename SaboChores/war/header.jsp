@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%@ page import="entity.Child" %>
+
 <html>
 <meta charset="utf-8">
 	
@@ -91,6 +94,12 @@ $(window).bind('resize',positionPopup);
 
 
 	<!-- HEADER -->
+	
+	<%
+	//retrieving the username from the session.
+	Child currentChild = (Child)session.getAttribute("username");
+	%>
+	
 	<header>
 		
 		<!-- header wrapper -->
@@ -98,20 +107,20 @@ $(window).bind('resize',positionPopup);
 			<div id="logo">
 				<table border="1" width="100%" font size="8px";>
 				<tr>
-				<td>Welcome, Rafael&nbsp</td>
+				<td>Welcome, <%=currentChild.getUserName()%>&nbsp</td>
 				<td>EXP: </td>
 				</tr>
 				<tr>
-				<td>Title: Sabo Kid&nbsp</td>
-				<td>Points: 100</td>
+				<td>Title: <%=currentChild.getTitle()%>&nbsp</td>
+				<td>Points: <%=currentChild.getPoints()%></td>
 				</tr>
 				<tr>
-				<td>Household: Victorious Secret&nbsp</td>
-				<td>Sabo Tix: 10</td>
+				<td>Household: <%=currentChild.getEmpire()%>&nbsp</td>
+				<td>Sabo Tix: <%=currentChild.getSaboTix()%></td>
 				</tr>
 				<tr>
 				<td></td>
-				<td>$ Tix: 10</td>
+				<td>$ Tix: <%=currentChild.getMoneyTix()%></td>
 				</tr>
 				</table>
 				<p>

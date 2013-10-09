@@ -14,12 +14,12 @@
 	 	<table>
 
 	 	<tr>
-	 	<td>Name: Rafael</br>
-	 	Title: Sabo Kid</br>
-	 	Empire: Victorious Secret</br>
-	 	Points: 10</br>
-	 	Sabo Tix: 1</br>
-	 	$$ Tix: 10
+	 	<td>Name:  <%=currentChild.getUserName()%></br>
+	 	Title:  <%=currentChild.getTitle()%></br>
+	 	Empire:  <%=currentChild.getEmpire()%></br>
+	 	Points:  <%=currentChild.getPoints()%></br>
+	 	Sabo Tix:  <%=currentChild.getSaboTix()%></br>
+	 	$$ Tix:  <%=currentChild.getMoneyTix()%>
 
 	 	</td>
 	 	</tr>
