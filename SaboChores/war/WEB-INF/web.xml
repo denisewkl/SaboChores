@@ -10,6 +10,16 @@
 	
 
 	<servlet>
+		<servlet-name>Servlet_LoginCheck</servlet-name>
+		<servlet-class>controller.Servlet_LoginCheck</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet_LoginCheck</servlet-name>
+		<url-pattern>/logincheck</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
 		<servlet-name>Servlet_ShopCheck</servlet-name>
 		<servlet-class>controller.Servlet_ShopCheck</servlet-class>
 	</servlet>

@@ -66,7 +66,7 @@
 			
 	 	<h2 class="heading">Login</h2>
 				<!-- form -->
-				<form id="contactForm" action="LoginCheck.jsp" method="post">
+				<form id="contactForm" action="/logincheck" method="post">
 					<fieldset>
 														
 						<p>
