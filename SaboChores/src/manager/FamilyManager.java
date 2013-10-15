@@ -8,7 +8,7 @@ import java.util.List;
 
 public class FamilyManager implements java.io.Serializable{
 	
-	List<String> allFamilyMembers = new ArrayList<String>();	
+		
 	List<Child> allChildren = new ArrayList<Child>();
 	List<Parent> allParent = new ArrayList<Parent>();
 
@@ -48,6 +48,8 @@ public class FamilyManager implements java.io.Serializable{
 	}
 	
 	public List<String> getAllFamilyMembers(Child currentChild) {
+		List<String> allFamilyMembers = new ArrayList<String>();
+		
 		//if (currentChild.getEmpire())
 		
 		//System.out.println("Currentchild: " + currentChild.getEmpire());

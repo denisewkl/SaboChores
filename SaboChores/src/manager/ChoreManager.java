@@ -67,6 +67,18 @@ public class ChoreManager implements java.io.Serializable {
 		return choresToDoTemp;
 	}
 	
+	//get all chores that are not completed. 
+	public List<Chore> getChoreToSabo (String username) {
+		List<Chore> choresToSabo = new ArrayList<Chore>();
+		
+		for (Chore c: this.getAllChores()) {
+			if (c.getChoreTakenBy().equals(username) && (c.getChoreStatus().equalsIgnoreCase("Available") || c.getChoreStatus().equalsIgnoreCase("Saboed"))) {
+				choresToSabo.add(c);
+			}
+		}		
+		return choresToSabo;
+	}
+	
 	//add new chore to the arraylist.
 	public void addChore (Chore c) {
 		allChores.add(c);

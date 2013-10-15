@@ -23,13 +23,32 @@ public class Servlet_SaboCheck  extends HttpServlet{
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
+		
 		Child currentChild = (Child)session.getAttribute("username");
-		
-		
 		FamilyManager familyMgr = FamilyManager.getInstance();
-		List<String> allMembers = familyMgr.getAllFamilyMembers(currentChild);
+		ChoreManager choreMgr = ChoreManager.getInstance();
 		
+		//getting the values from the selected option from child-dashboard, sabo option.
+		String[] saboedNameArray = request.getParameterValues("saboedName");
+		String[] saboedTaskArray = request.getParameterValues("saboedTask");
 		
+		//putting the values from the array to the string.
+		String saboedName = saboedNameArray[0];
+		int saboedTaskID = Integer.parseInt(saboedTaskArray[0]);
+		
+		//getting the chore using the specific ID.
+		Chore saboedChore = choreMgr.getChore(saboedTaskID);
+		
+		//setting the chore to the saboed name;
+		saboedChore.setChoreTakenBy(saboedName);
+		
+		//setting the chore saboby name
+		saboedChore.setSaboBy(currentChild.getUserName());
+		
+		//deduct the sabo tix from the current user.
+		currentChild.setSaboTix(currentChild.getSaboTix() - 1);
+		
+		response.sendRedirect("child-dashboard.jsp");
 		
 			
 	}

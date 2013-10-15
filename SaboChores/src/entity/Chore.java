@@ -28,6 +28,10 @@ public class Chore implements java.io.Serializable {
 		this.takenBy = username;
 	}
 	
+	public void setSaboBy(String username) {
+		this.saboBy = username;
+	}
+	
 	public int getChoreID() {
 		return this.choreID;
 	}

@@ -2,12 +2,10 @@
 
 	<!-- MAIN -->
 	<%
-	List<String> allFamilyMembers = familyMgr.getAllFamilyMembers(currentChild);
-		
+	List<String> allFamilyMembers = familyMgr.getAllFamilyMembers(currentChild);		
 	List<Chore> allChoresToThisUser = choreMgr.getChoreToSpecificMember(currentChild.getUserName());
-	%> 
-	
-		Total chores to do by me: <%=allChoresToThisUser.size()%>
+	List<Chore> getChoreToSabo = choreMgr.getChoreToSabo(currentChild.getUserName());
+	%>
 	
 	
 	<div role="main" id="main">
@@ -88,12 +86,21 @@
 	<form id="overlay_form2" style="display:none" action = "/sabocheck">
 		<h6>Sabo family members</h6>
 		<label>Who?</label><br>
-		<select name = "saboList"> 
+		<select name = "saboedName"> 
 			<%
 				for (String name: allFamilyMembers) { %> 
 					<option value ="<%=name%>"><%=name%></option>
 			<%	}%>
 		</select>
+		<br />
+		Chore to sabo: <br />
+		<select name = "saboedTask"> 
+			<%
+				for (Chore c: getChoreToSabo) { %> 
+					<option value ="<%=c.getChoreID()%>"><%=c.getTaskDescription()%></option>
+			<%	}%>
+		</select>
+		<br />
 		<input type="Submit" value="Sabo" />
 		<a href="#" id="close2" >Close</a>
 	</form>

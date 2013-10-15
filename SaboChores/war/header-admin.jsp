@@ -50,7 +50,7 @@ function toggle(Info) {
 		Parent currentParent = (Parent)session.getAttribute("username");
 
        if (currentParent==null) {
-                response.sendRedirect("index.html");
+                response.sendRedirect("index.jsp");
                 return;
       	}
 %>

@@ -106,7 +106,7 @@ $(window).bind('resize',positionPopup);
 	ChoreManager choreMgr = ChoreManager.getInstance();
 		
 	if (currentChild==null) {
-    	response.sendRedirect("index.html");
+    	response.sendRedirect("index.jsp");
    		return;
     }
 	%>
