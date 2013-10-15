@@ -83,11 +83,11 @@ function toggle(Info) {
 				<td>&nbsp</td>
 				</tr>
 				<tr>
-				<td>Welcome, Denise&nbsp</td>
+				<td>Welcome, currentParent.getUserName()&nbsp</td>
 				<td></td>
 				</tr>
 				<tr>
-				<td>Empire: Victorious Secret</td>
+				<td>Empire: currentParent.getEmpire()</td>
 				<td><a href="logout.jsp">Logout</a></td>
 				</tr>
 				<tr>

@@ -2,7 +2,9 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@ page import="entity.Child" %>
+<%@ page import="entity.*" %>
+<%@ page import="manager.*" %>
+<%@ page import="java.util.*" %>
 
 <html>
 <meta charset="utf-8">
@@ -129,9 +131,7 @@ $(window).bind('resize',positionPopup);
 				</tr>
 				</table>
 				<p>
-				<form method="post" action="logout.jsp">
-				<button type="button" id="submit">Logout</button>
-				</form>
+				<a href="logoutChild.jsp">Logout</a>
 				</p>
 				
 				

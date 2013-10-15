@@ -18,6 +18,32 @@
 		<url-pattern>/childlogincheck</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>Servlet_ChoreCheck</servlet-name>
+		<servlet-class>controller.Servlet_ChoreCheck</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet_ChoreCheck</servlet-name>
+		<url-pattern>/chorecheck</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Servlet_SaboCheck</servlet-name>
+		<servlet-class>controller.Servlet_SaboCheck</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet_SaboCheck</servlet-name>
+		<url-pattern>/sabocheck</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Servlet_ExchangeForMoneyCheck</servlet-name>
+		<servlet-class>controller.Servlet_ExchangeForMoneyCheck</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet_ExchangeForMoneyCheck</servlet-name>
+		<url-pattern>/exchangemoneycheck</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>Servlet_ParentLoginCheck</servlet-name>

@@ -49,7 +49,7 @@ public class Servlet_ShopCheck  extends HttpServlet{
 			if (currentChild.getPoints() > numOfMoneyTix * 20) {
 				//update the currentChild points and number of money tix.
 				currentChild.setPoints(currentChild.getPoints() - numOfMoneyTix * 20);
-				currentChild.setSaboTix(currentChild.getMoneyTix() + numOfMoneyTix);
+				currentChild.setMoneyTix(currentChild.getMoneyTix() + numOfMoneyTix);
 				response.sendRedirect("child-dashboard.jsp");
 			} else {
 				//goes to the error page becos not enuff points to exchange for tix

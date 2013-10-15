@@ -3,10 +3,10 @@ package manager;
 import entity.*; 
 import java.util.List;
 
-public class shopmanager {
+public class ShopManager {
 
 	//default constructor
-	public shopmanager() {
+	public ShopManager() {
 		//create new items in the list.
 	}
 	
