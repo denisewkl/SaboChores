@@ -101,6 +101,10 @@ $(window).bind('resize',positionPopup);
 	//retrieving the username from the session.
 	Child currentChild = (Child)session.getAttribute("username");
 	
+	ShopManager shopMgr = ShopManager.getInstance();
+	FamilyManager familyMgr = FamilyManager.getInstance();
+	ChoreManager choreMgr = ChoreManager.getInstance();
+		
 	if (currentChild==null) {
     	response.sendRedirect("index.html");
    		return;

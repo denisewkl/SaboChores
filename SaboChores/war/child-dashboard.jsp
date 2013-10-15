@@ -1,16 +1,10 @@
 <%@include file="header.jsp" %>
 
-
-			
-
-	
 	<!-- MAIN -->
 	<%
-		FamilyManager familyMgr = new FamilyManager();
-		List<String> allFamilyMembers = familyMgr.getAllFamilyMembers(currentChild);
+	List<String> allFamilyMembers = familyMgr.getAllFamilyMembers(currentChild);
 		
-		ChoreManager choreMgr = new ChoreManager();
-		List<Chore> allChoresToThisUser = choreMgr.getChoreToSpecificMember(currentChild.getUserName());
+	List<Chore> allChoresToThisUser = choreMgr.getChoreToSpecificMember(currentChild.getUserName());
 	%> 
 	
 		Total chores to do by me: <%=allChoresToThisUser.size()%>
@@ -24,47 +18,43 @@
 	 	<table width="100%">
 	 	<thead><h5>Chores</h5></thead>
 	 	 
+		
 	 	<% for (Chore c: allChoresToThisUser) { %>
 	 		<tr>
 			 	<td><%=c.getChoreID()%>: <%=c.getTaskDescription()%> : <%=c.getChoreStatus()%></td>
 			 	
 			 	<% if (c.getChoreStatus().equalsIgnoreCase("Available")) { %>
-			 	
 			 		<form method = "post" action = "/chorecheck"> 
 			 		<td><input type="submit" value="Available" id="submit" /></td>
 			 		<td>Points: <%= c.getChorePoints() %> </td>
 			 		
 			 		<input type = "hidden" name = "choreStatus" value = "Available" />
-			 		<input type = "hidden" name = "chore" value = <%=c.getChoreID()%> />
+			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } else if (c.getChoreStatus().equalsIgnoreCase("In-Progress")) {%>
-			 		
 			 		<form method = "post" action = "/chorecheck"> 
 			 		<td><input type="submit" value="In-Progress" id="submit" /></td>
 			 		<td>Points: <%= c.getChorePoints() %> </td>
 			 		<input type = "hidden" name = "choreStatus" value = "In-Progress" />
-			 		<input type = "hidden" name = "chore" value = <%=c.getChoreID()%> />
+			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } else if (c.getChoreStatus().equalsIgnoreCase("Saboed"))  {%>
-			 	
 			 		<form method = "post" action = "/chorecheck"> 
 			 		<td><input type="submit" value="Saboed" id="submit" />
 						Saboed by: <%=c.getSaboBy()%> 			 		
 			 		</td>
 			 		<td>Points: <%= c.getChorePoints() %> </td>
 			 		<input type = "hidden" name = "choreStatus" value = "Saboed" />
-			 		<input type = "hidden" name = "chore" value = <%=c.getChoreID()%> />
+			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } else {%>
-			 	
 			 		<form method = "post" action = "/chorecheck"> 
 			 		<td><input type="submit" value="Completed" id="submit" /></td>
 			 		<td>Points: <%= c.getChorePoints() %> </td>
 			 		<input type = "hidden" name = "choreStatus" value = "Completed" />
-			 		<input type = "hidden" name = "chore" value = <%=c.getChoreID()%> />
+			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } %>
-
 		 	</tr>
 	 	<% } %>
 	 	

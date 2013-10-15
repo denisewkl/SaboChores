@@ -5,7 +5,8 @@ import entity.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FamilyManager {
+
+public class FamilyManager implements java.io.Serializable{
 	
 	List<String> allFamilyMembers = new ArrayList<String>();	
 	List<Child> allChildren = new ArrayList<Child>();
@@ -13,14 +14,26 @@ public class FamilyManager {
 
 	//default constructor
 	public FamilyManager() {
-	}
-	
-	//all childrens
-	public List<Child> getAllChildren() {
 		Child agurz = new Child("agurz","agurz","Good Kid","Empire 2", 100, 1000, 10000);
 		Child freda = new Child("freda","freda","Angel","Empire 2", 100, 100, 1000);
 		allChildren.add(agurz);
 		allChildren.add(freda);
+	}
+	
+	/**
+     * SingletonHolder is loaded on the first execution of Singleton.getInstance() 
+     * or the first access to SingletonHolder.INSTANCE, not before.
+     */
+	private static class FamilyManagerHolder { 
+        public static final FamilyManager INSTANCE = new FamilyManager();
+	}
+	
+	public static FamilyManager getInstance() {
+        return FamilyManagerHolder.INSTANCE;
+	}
+	
+	//all childrens
+	public List<Child> getAllChildren() {
 		return allChildren;
 	}
 	

@@ -4,6 +4,11 @@
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<%@ page import="entity.*" %>
+<%@ page import="manager.*" %>
+<%@ page import="java.util.*" %>
+
 <head>
 	<meta charset="utf-8">
 	
@@ -27,7 +32,6 @@
 	<script src="js/modernizr-2.5.3.min.js"></script>
 </head>
 <body>
-
 
 
 	<!-- HEADER -->

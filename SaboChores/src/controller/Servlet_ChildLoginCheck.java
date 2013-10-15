@@ -14,8 +14,6 @@ import entity.*;
 import manager.*;
 import java.util.*;
 
-import entity.Child;
-import manager.FamilyManager;
 
 public class Servlet_ChildLoginCheck extends HttpServlet{
 	
@@ -33,7 +31,11 @@ public class Servlet_ChildLoginCheck extends HttpServlet{
 			
 			HttpSession session = request.getSession(true);
 			
-			FamilyManager familyMgr = new FamilyManager();
+			//taking out all managers
+			FamilyManager familyMgr = FamilyManager.getInstance();
+			ChoreManager choreMgr = ChoreManager.getInstance();
+			ShopManager shopMgr = ShopManager.getInstance();
+			
 			List<Child> allChildren = familyMgr.getAllChildren();
 			
 			Child currentChild = null;

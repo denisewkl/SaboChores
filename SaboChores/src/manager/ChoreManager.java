@@ -3,17 +3,13 @@ package manager;
 import entity.*; 
 import java.util.*;
 
-public class ChoreManager {
+public class ChoreManager implements java.io.Serializable {
 
 	List<Chore> allChores = new ArrayList<Chore>();
 	
 	//default constructor
 	public ChoreManager() {
 		//create new items in the list.
-	}
-	
-	public List<Chore> getAllChores() {
-		
 		//Chore status
 		//Available
 		//In-Progress
@@ -30,7 +26,6 @@ public class ChoreManager {
 		Chore chore8 = new Chore(8, "Wash the car", "Available", 6, "rafael","");
 		Chore chore9 = new Chore(9, "Clean the window", "Available", 5, "agurz","");
 		Chore chore10 = new Chore(10, "Clean the toilet", "Available", 4, "agurz","");
-
 		allChores.add(chore1);
 		allChores.add(chore2);
 		allChores.add(chore3);
@@ -40,8 +35,22 @@ public class ChoreManager {
 		allChores.add(chore7);
 		allChores.add(chore8);
 		allChores.add(chore9);
-		allChores.add(chore10);
-		
+		allChores.add(chore10);		
+	}
+	
+	/**
+     * SingletonHolder is loaded on the first execution of Singleton.getInstance() 
+     * or the first access to SingletonHolder.INSTANCE, not before.
+     */
+	private static class ChoreManagerHolder { 
+        public static final ChoreManager INSTANCE = new ChoreManager();
+	}
+	
+	public static ChoreManager getInstance() {
+        return ChoreManagerHolder.INSTANCE;
+	}
+	
+	public List<Chore> getAllChores() {
 		return allChores;
 	}
 	

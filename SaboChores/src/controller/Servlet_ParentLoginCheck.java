@@ -12,10 +12,9 @@ import javax.servlet.http.*;
 import java.io.*;
 import entity.*;
 import manager.*;
+
 import java.util.*;
 
-import entity.Child;
-import entity.Parent;
 
 public class Servlet_ParentLoginCheck extends HttpServlet{
 	
@@ -32,7 +31,12 @@ public class Servlet_ParentLoginCheck extends HttpServlet{
 		public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
 			HttpSession session = request.getSession(true);
-			FamilyManager familyMgr = new FamilyManager();
+			
+			//taking out all managers
+			FamilyManager familyMgr = FamilyManager.getInstance();
+			ChoreManager choreMgr = ChoreManager.getInstance();
+			ShopManager shopMgr = ShopManager.getInstance();
+			
 			List<Parent> allParents = familyMgr.getAllParent();
 			
 			Parent currentParent = null;

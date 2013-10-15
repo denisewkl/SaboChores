@@ -22,48 +22,40 @@ public class Servlet_ChoreCheck  extends HttpServlet{
 	}
 	
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession(true);
 		
-		//getting all necessary information inputted by the user from the previous form.
+		//getting all necessary information inputed by the user from the previous form.
 		Child currentChild = (Child)session.getAttribute("username");
 		String choreStatus = request.getParameter("choreStatus");
 		int choreID = Integer.parseInt(request.getParameter("chore"));
 		
 		//System.out.println("Chore button clicked: " + choreStatus);
 		
-		
 		//getting all chores.
-		ChoreManager choreMgr = new ChoreManager();
+		ChoreManager choreMgr = ChoreManager.getInstance();
 		List<Chore> allChores = choreMgr.getAllChores();
 		Chore currentChore = choreMgr.getChore(choreID);
 		
 		//System.out.println("Chore: " + currentChore.getTaskDescription());
 		System.out.println("BEFORE Chore button clicked: " + currentChore.getChoreStatus());
 				
-		//if Available
+		
 		if (choreStatus.equalsIgnoreCase("Available")) {
 			currentChore.setStatus("In-Progress");
 			currentChore.setChoreTakenBy(currentChild.getUserName());
 			System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
-			response.sendRedirect("child-dashboard.jsp");
-		}
-		
-		//if In-Progress
-		if (choreStatus.equalsIgnoreCase("In-Progress")) {
+		} else if (choreStatus.equalsIgnoreCase("In-Progress")) {
 			currentChore.setStatus("Completed");
-			response.sendRedirect("child-dashboard.jsp");
-		}
-		
-		//if Completed
-		if (choreStatus.equalsIgnoreCase("Completed")) {
-			response.sendRedirect("child-dashboard.jsp");		
-		}
-		
-		//if Saboed
-		if (choreStatus.equalsIgnoreCase("Saboed")) {
+			System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
+		} else if (choreStatus.equalsIgnoreCase("Completed")) {
+			
+		}else if (choreStatus.equalsIgnoreCase("Saboed")) {
 			currentChore.setStatus("In-Progress");
-			response.sendRedirect("child-dashboard.jsp");
+			System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
 		}
+		
+		response.sendRedirect("child-dashboard.jsp");		
 			
 	}
 

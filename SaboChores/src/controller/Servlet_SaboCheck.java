@@ -26,7 +26,7 @@ public class Servlet_SaboCheck  extends HttpServlet{
 		Child currentChild = (Child)session.getAttribute("username");
 		
 		
-		FamilyManager familyMgr = new FamilyManager();
+		FamilyManager familyMgr = FamilyManager.getInstance();
 		List<String> allMembers = familyMgr.getAllFamilyMembers(currentChild);
 		
 		
