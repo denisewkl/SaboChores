@@ -26,7 +26,7 @@
 	 	 
 	 	<% for (Chore c: allChoresToThisUser) { %>
 	 		<tr>
-			 	<td><%=c.getChoreID()%>: <%=c.getTaskDescription()%></td>
+			 	<td><%=c.getChoreID()%>: <%=c.getTaskDescription()%> : <%=c.getChoreStatus()%></td>
 			 	
 			 	<% if (c.getChoreStatus().equalsIgnoreCase("Available")) { %>
 			 	
@@ -37,7 +37,7 @@
 			 		<input type = "hidden" name = "choreStatus" value = "Available" />
 			 		<input type = "hidden" name = "chore" value = <%=c.getChoreID()%> />
 			 		</form>
-			 	<% } else if (c.getChoreStatus().equalsIgnoreCase("Progress")) {%>
+			 	<% } else if (c.getChoreStatus().equalsIgnoreCase("In-Progress")) {%>
 			 		
 			 		<form method = "post" action = "/chorecheck"> 
 			 		<td><input type="submit" value="In-Progress" id="submit" /></td>
