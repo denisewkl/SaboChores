@@ -16,7 +16,7 @@ import java.util.*;
 
 import entity.Child;
 
-public class Servlet_LoginCheck extends HttpServlet{
+public class Servlet_ChildLoginCheck extends HttpServlet{
 	
 	//overwrites the doGet method
 		public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -37,48 +37,36 @@ public class Servlet_LoginCheck extends HttpServlet{
 	        String password=request.getParameter("password");
 			
 			//creating all the child out first.
-			Child rafael = new Child("rafael","rafael","Sabo Kid","Empire 1", 10, 10, 10);
 			Child agurz = new Child("agurz","agurz","Good Kid","Empire 2", 100, 1000, 10000);
 			Child freda = new Child("freda","freda","Angel","Empire 2", 100, 100, 1000);
 			
 			//creating all the parent out first.
 			Parent denise = new Parent("denise","denise","Empire 1");
+			Parent rafael = new Parent("rafael","rafael","Empire 3");
 			
-			
-			
-	        
 	        // setting up password here. 
 	        HashMap<String, Object> map = new HashMap<String, Object>();
-			map.put(rafael.getUserName(), rafael);
 			map.put(agurz.getUserName(), agurz);
 			map.put(freda.getUserName(), freda);
-			map.put(denise.getUserName(), denise);
 	   
-	        if (map.get(username) instanceof Child) { //if child comes here.
+	        //if (map.get(username) instanceof Child) { //if child comes here.
 	        	
-	        	Child currentChild = (Child)map.get(username);
-	        	
+	        Child currentChild = (Child)map.get(username);
+	        
+	        if (currentChild == null) {
+	        	response.sendRedirect("Error.jsp");
+	        } else {
+	        	       	
 	        	if (currentChild.getUserName().equalsIgnoreCase(username) && currentChild.getPassword().equalsIgnoreCase(password)){
 	        		session.setAttribute("username",currentChild);
 	            	response.sendRedirect("child-dashboard.jsp");
+	            	//System.out.println("Child page");
 	        	} else {
 	        		//System.out.println("Child, wrong credentials.");
 	        		response.sendRedirect("Error.jsp");
 	        	}
-	        	
-	        } else if (map.get(username) instanceof Parent) { //if parent comes here.
-	        	
-	        	Parent currentParent = (Parent)map.get(username);
-	        	
-	        	if (currentParent.getUserName().equalsIgnoreCase(username) && currentParent.getPassword().equalsIgnoreCase(password)){
-	        		session.setAttribute("username",currentParent);
-	        		response.sendRedirect("admin-dashboard.jsp");
-	        	} else {
-	        		//System.out.println("Parent, wrong credentials.");
-	        		response.sendRedirect("Error.jsp");
-	        	}
-	        	
-	        }
+	        
+	        }	
 				
 		}
 }

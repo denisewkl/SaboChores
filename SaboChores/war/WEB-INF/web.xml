@@ -10,12 +10,22 @@
 	
 
 	<servlet>
-		<servlet-name>Servlet_LoginCheck</servlet-name>
-		<servlet-class>controller.Servlet_LoginCheck</servlet-class>
+		<servlet-name>Servlet_ChildLoginCheck</servlet-name>
+		<servlet-class>controller.Servlet_ChildLoginCheck</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Servlet_LoginCheck</servlet-name>
-		<url-pattern>/logincheck</url-pattern>
+		<servlet-name>Servlet_ChildLoginCheck</servlet-name>
+		<url-pattern>/childlogincheck</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>Servlet_ParentLoginCheck</servlet-name>
+		<servlet-class>controller.Servlet_ParentLoginCheck</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet_ParentLoginCheck</servlet-name>
+		<url-pattern>/parentlogincheck</url-pattern>
 	</servlet-mapping>
 	
 	

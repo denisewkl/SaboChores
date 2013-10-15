@@ -98,6 +98,11 @@ $(window).bind('resize',positionPopup);
 	<%
 	//retrieving the username from the session.
 	Child currentChild = (Child)session.getAttribute("username");
+	
+	if (currentChild==null) {
+    	response.sendRedirect("index.html");
+   		return;
+    }
 	%>
 	
 	<header>

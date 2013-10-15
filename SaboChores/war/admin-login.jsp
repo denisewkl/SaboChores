@@ -96,7 +96,7 @@ $(window).bind('resize',positionPopup);
 			
 	 	<h2 class="heading">Login</h2>
 				<!-- form -->
-				<form id="contactForm" action="LoginCheck.jsp" method="post">
+				<form id="contactForm" action="/parentlogincheck" method="post">
 					<fieldset>
 														
 						<p>

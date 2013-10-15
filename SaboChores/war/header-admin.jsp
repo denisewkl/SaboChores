@@ -3,6 +3,9 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
+<%@ page import="entity.Parent" %>
+
 <meta charset="utf-8">
 	
 	
@@ -43,18 +46,23 @@ function toggle(Info) {
 </head>
 <body>
 <%
-       String pUser = (String)session.getAttribute("username");//typecast
+       //retrieving the username from the session.
+		Parent currentParent = (Parent)session.getAttribute("username");
 
-       if (pUser==null) {
+       if (currentParent==null) {
                 response.sendRedirect("index.html");
                 return;
-       }
+      	}
 %>
 
 
 	<!-- HEADER -->
 	<header>
 		<%
+		
+		
+	
+	
 		ArrayList<String> allUsers=new ArrayList<String>();
 		allUsers.add("Benny,5,benny89");
 		allUsers.add("Agurz,4,password");
