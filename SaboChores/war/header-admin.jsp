@@ -1,3 +1,4 @@
+<%@ page import="java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -41,12 +42,25 @@ function toggle(Info) {
 	
 </head>
 <body>
+<%
+       String pUser = (String)session.getAttribute("username");//typecast
 
+       if (pUser==null) {
+                response.sendRedirect("index.html");
+                return;
+       }
+%>
 
 
 	<!-- HEADER -->
 	<header>
-		
+		<%
+		ArrayList<String> allUsers=new ArrayList<String>();
+		allUsers.add("Benny,5,benny89");
+		allUsers.add("Agurz,4,password");
+		allUsers.add("Freda,6,freda123");
+		session.setAttribute("allUserList",allUsers);
+		%>
 		<!-- header wrapper -->
 		<div class="wrapper cf">
 			<div id="logo">
@@ -66,7 +80,7 @@ function toggle(Info) {
 				</tr>
 				<tr>
 				<td>Empire: Victorious Secret</td>
-				<td><button type="button" id="submit" >Logout</button></td>
+				<td><a href="logout.jsp">Logout</a></td>
 				</tr>
 				<tr>
 				<td>&nbsp</td>

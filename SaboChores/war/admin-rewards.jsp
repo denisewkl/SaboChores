@@ -1,71 +1,95 @@
 <%@include file="header-admin.jsp" %>
 <script type="text/javascript">
  
-$(document).ready(function(){
-//open popup
-$("#pop").click(function(){
-$("#overlay_form").fadeIn(1000);
-positionPopup();
-});
- 
-//close popup
-$("#close").click(function(){
-$("#overlay_form").fadeOut(500);
-});
-});
- 
-//position the popup at the center of the page
-function positionPopup(){
-if(!$("#overlay_form").is(':visible')){
-return;
+function showform(a)
+{
+	if(a==1)
+    	document.getElementById("overlay_form").style.display="block";
+      
+	else
+		document.getElementById("overlay_form").style.display="none";
 }
-
-}
- 
-//maintain the popup at center of the page when browser resized
-$(window).bind('resize',positionPopup);
  
 </script>
 
 			
-
+<%
+	 	ArrayList<String> al = new ArrayList<String>();
+	 	
+	 	if(session.getAttribute("rewards")==null){
+	 		al.add("Agurz,4,password");
+		 	al.add("Freda,6,freda123");
+		 	session.setAttribute("rewards",al);
+	 	}
+	 	else{		
+	 		al = (ArrayList<String>)session.getAttribute("rewards");
+	 	}
+	 	
+	 	
+	 	%>
 	
 	<!-- MAIN -->
 	<div role="main" id="main">
 		<div class="wrapper">
 			
 	 	<h2 class="heading" align="center">Child Rewards</h2>
-
+<form onsubmit="">
 	 	<table width="100%">
 	 	
 	 	<tr>
 	 	<td><h5>Child</h5></td>
 	 	<td><h5>Reward</h5></td>
 	 	</tr>
-	 	<tr>
-	 	<td><input type="checkbox" name="chore" value="car">1. Agurz</td>
-	 	<td>$4</td>
-	 	</tr>
-	 	<tr>
-	 	<td><input type="checkbox" name="chore" value="bathe">2. Freda </td>
-	 	<td>$2</td>
-	 	</tr>
+	 	<%
+	 	for(String s: al){
+	 		String[] arr= s.split(",");
+	 		System.out.println(arr[2]);
+	 		%>
+	 		<tr>
+		 	<td><input type="checkbox" name="user" value='<%=arr[0]+','+arr[1]+','+arr[2]%>'><%=arr[0] %></td>
+		 	<td>$<%=arr[1] %></td>
+		 	</tr>
+	 		<%
+	 	}
+	 	%>
+	 	
 	 	</table>
 	 	<p>
 	 	<table width="100%">
 	 	<tr>
 	 	<td><input type="button" value="Back" onclick="goBack()"></td>
-	 	<td><input type="submit" value="Confirm" id="pop" /></td>
+	 	<td><input type="button" value="Confirm" onclick="showform(1)" /></td>
 	 	</tr>
 	  	</table>
+	  	
+	  	<div id="overlay_form" style="display:none">
+		<h6>Reward</h6>
+		<label>Confirm Reward Redemption?</label></br></br>
+		<input type="button" value="No" name="choice" onclick="showform(2)"/>
+		<input type="submit" value="Yes" name="choice" id="close"/>
+		</div>
+		
+		</form>
 	  	</p>
-	  <!-- pop up form for delete chore -->
-<form id="overlay_form" style="display:none">
-<h6>Reward</h6>
-<label>Confirm Reward Redemption?</label></br></br>
-<input type="button" value="No" name="no" id="close"/>
-<input type="button" value="Yes" name="Yes" id="close"/>
-</form>
+ <%
+	  String choice=request.getParameter("choice");
+	  String user[]= request.getParameterValues("user");
+	  if(user != null && choice.equals("Yes"))
+	  {
+	  for(int i=0; i<user.length; i++){
+		for(int x=0; x<al.size();x++){
+			if(al.get(x).equals(user[i])){
+
+				al.remove(x);
+
+			}
+		}
+	  }
+	  session.setAttribute("rewards", al);
+	  response.sendRedirect("admin-rewards.jsp");
+	  }
+	 
+	  %>
 
 	  </div>
 	</div>

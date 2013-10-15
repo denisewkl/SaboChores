@@ -15,13 +15,13 @@
 		 <div id="faq1" class="ANS"><h7>Sabo Chores is a game where you sabo your family to do chores.</h7></div>
 		</div>
 		<div class="FAQ" onclick="toggle('faq2')">
-		 <h6>What is Sabo Chores?</h6>
-		 <div id="faq2" class="ANS"><h7>Sabo Chores is a game where you sabo your family to do chores.</h7></div>
+		 <h6>How do I add my children to my household?</h6>
+		 <div id="faq2" class="ANS"><h7>Go to Member Mangement and Click Add.</h7></div>
 		</div>
 		
 	 	<div class="FAQ" onclick="toggle('faq3')">
-		<h6>What is Sabo Chores?</h6>
-		 <div id="faq3" class="ANS"><h7>Sabo Chores is a game where you sabo your family to do chores.</h7></div>
+		<h6>How do I add new Chores?</h6>
+		 <div id="faq3" class="ANS"><h7>Go to Dashboard and click add Chore..</h7></div>
 		</div>
 	 	
 	  </div>

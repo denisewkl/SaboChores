@@ -2,70 +2,134 @@
 
 <script type="text/javascript">
  
-$(document).ready(function(){
-//open popup
-$("#pop").click(function(){
-$("#overlay_form").fadeIn(1000);
-positionPopup();
-});
- 
-//close popup
-$("#close").click(function(){
-$("#overlay_form").fadeOut(500);
-});
-});
- 
-//position the popup at the center of the page
-function positionPopup(){
-if(!$("#overlay_form").is(':visible')){
-return;
-}
-
+function showform(a)
+{
+	if(a==1)
+    	document.getElementById("overlay_form").style.display="block";
+      
+	else
+		document.getElementById("overlay_form").style.display="none";
 }
  
 //maintain the popup at center of the page when browser resized
-$(window).bind('resize',positionPopup);
+
+ 
+</script>
+<!--  
+<script type="text/javascript">
+ 
+function showStatsform(a)
+{
+	if(a==1)
+    	document.getElementById("status_form").style.display="block";
+      
+	else
+		document.getElementById("status_form").style.display="none";
+}
+ 
+//maintain the popup at center of the page when browser resized
+
  
 </script>
 
-			
-
-	
+-->	
 	<!-- MAIN -->
 	<div role="main" id="main">
 		<div class="wrapper">
 			
 	 	<h2 class="heading" align="center">Dashboard</h2>
-
+	 	
+	 	<%
+	 	ArrayList<String> al = new ArrayList<String>();
+	 	
+	 	if(session.getAttribute("choreList")==null){
+	 		al.add("Wash the Car,4,Available");
+		 	al.add("Bathe the Dog,2,In Progress");
+		 	session.setAttribute("choreList",al);
+	 	}
+	 	else{		
+	 		al = (ArrayList<String>)session.getAttribute("choreList");
+	 	}
+	 	
+	 	
+	 	%>
+<form onsubmit="">
 	 	<table width="100%">
 	 	<thead><h5>Chores</h5></thead>
-	 	<tr>
-	 	<td><input type="checkbox" name="chore" value="car">1. Wash the Car</td>
-	 	<td><input type="submit" value="Available" id="submit" /></td>
-	 	<td>4 pts</td>
-	 	</tr>
-	 	<tr>
-	 	<td><input type="checkbox" name="chore" value="bathe">2. Bathe the Dog </td>
-	 	<td><input type="submit" value="Available" id="submit" /></td>
-	 	<td>2 pts</td>
-	 	</tr>
+	 	<%
+	 	for(String s: al){
+	 		String[] arr= s.split(",");
+	 		
+	 		%>
+	 		<tr>
+		 	<td><input type="checkbox" name="chore" value='<%=arr[0]+','+arr[1]+','+arr[2]%>'><%=arr[0] %></td>
+		 	<td><input type="button" name="status" value='<%=arr[2] %>' disabled/></td>
+		 	<td><%=arr[1] %> points</td>
+		 	</tr>
+	 		<%
+	 	}
+	 	%>
+	 	
 	 	</table>
 	 	<p>
 	 	<table width="100%">
 	 	<tr>
-	 	<td><input type="submit" value="Delete Chore" id="pop" /></td>
-	 	<td><input type="submit" value="Add Chore" id="submit" /></td>
+	 	<td><input type="button" value="Delete Chore" onclick="showform(1)" /></td>
+	 	<td><input type="submit" value="Add Chore" onclick="window.location.href='add-chore.jsp'; return false;" /></td>
 	 	</tr>
 	  	</table>
-<!-- pop up form for delete chore -->
-<form id="overlay_form" style="display:none">
-<h6>Delete Chore</h6>
-<label>Are you sure you want to delete chore(s)?</label></br></br>
-<input type="button" value="No" name="no" id="close"/>
-<input type="button" value="Yes" name="Yes" id="close"/>
-</form>
-	
+	  	
+	  	<div id="overlay_form" style="display:none">
+	  	<h6>Delete Chore</h6>
+		<label>Are you sure you want to delete chore(s)?</label></br></br>
+		<input type="button" value="No" name="choice" onclick="showform(2)"/>
+		<input type="submit" value="Yes" name="choice" id="submit"/>
+	  	</div>
+	  	<!--  
+	  	<div id="status_form" style="display:none">
+	  	<h6>Chore</h6>
+	  	<%---
+	  	String status=request.getParameter("status");
+	  	String stats="";
+	  	if(status!=null){
+		  	if(status.equals("Available") || status.equals("Sabotaged!")){
+		  		stats="Start on Chore?";
+		  	}else if(status.equals("In Progress")){
+		  			stats="Complete Chore?";
+		  	}
+	  	}
+	  		
+	  	
+	  	
+	  	--%>
+		<label><%--=stats --%></label></br></br>
+		<input type="button" value="No" name="choice" onclick="showStatsform(2)"/>
+		<input type="submit" value="Yes" name="choice" id="submit"/>
+	  	</div>-->
+	  	
+	  	</form>
+
 	  	</p>
+	  <%
+	  String choice=request.getParameter("choice");
+	  String chore[]= request.getParameterValues("chore");
+	  System.out.println(choice);
+	  if(chore != null && choice.equals("Yes"))
+	  {
+	  for(int i=0; i<chore.length; i++){
+		for(int x=0; x<al.size();x++){
+			if(al.get(x).equals(chore[i])){
+				System.out.println(al.get(x));
+				al.remove(x);
+
+			}
+		}
+	  }
+	  session.setAttribute("choreList", al);
+	  response.sendRedirect("admin-dashboard.jsp");
+	  }
+	 
+	  %>
 	  
 	  <div align="center"><a href="admin-rewards.jsp">View Child Rewards</a></div>
 	  </div>

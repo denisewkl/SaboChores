@@ -41,10 +41,10 @@ public class Servlet_LoginCheck extends HttpServlet{
 			Child agurz = new Child("agurz","agurz","Good Kid","Empire 2", 100, 1000, 10000);
 			Child freda = new Child("freda","freda","Angel","Empire 2", 100, 100, 1000);
 			
-			//String username, String password, String empire
+			//creating all the parent out first.
 			Parent denise = new Parent("denise","denise","Empire 1");
 			
-			//creating all the parent out first.
+			
 			
 	        
 	        // setting up password here. 

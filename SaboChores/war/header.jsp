@@ -124,7 +124,9 @@ $(window).bind('resize',positionPopup);
 				</tr>
 				</table>
 				<p>
-				<button type="button" id="submit" >Logout</button>
+				<form method="post" action="logout.jsp">
+				<button type="button" id="submit">Logout</button>
+				</form>
 				</p>
 				
 				

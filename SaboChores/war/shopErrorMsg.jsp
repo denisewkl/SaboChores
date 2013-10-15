@@ -1,48 +1,13 @@
-<%@include file="header-admin.jsp" %>
+<%@include file="header.jsp" %>
 
 
 			
 
 	
 	<!-- MAIN -->
-	<div role="main" id="main">
-		<div class="wrapper">
-
-	 	<h2 class="heading" align="center">Add Chore</h2>
-<form action="choreCheck.jsp">
-	 	<table width="100%">
-	 	<thead><h5>Chores</h5></thead>
-	 	<tr>
-	 	<td>Name of Chore: </td>
-	 	<td><input type="text" name="nChore"/></td>
-	 	</tr>
-	 	<tr>
-	 	<td>Points allocated: </td>
-	 	<td><input type="number" name="points" id="points" min="0" max="20" step="1" value="0"></td>
-	 	</tr>
-	 	</table>
-	 	<p>
-	 	<table width="100%">
-	 	<tr>
-	 	<td><input type="button" value="Back" onclick="goBack()"></td>
-	 	<td><input type="submit" value="Confirm" id="submit" /></td>
-	 	</tr>
-	  	</table>
-	  	</form>
-	  	</p>
-	  
-		<%
-		
-		String errorMsg=(String)session.getAttribute("error");
-		if(errorMsg!=null){
-			 out.println(errorMsg);
-			session.removeAttribute("error");
-		}
-		
-		%>
-	  </div>
-	</div>
+	Error!
 	<!-- ENDS MAIN -->
+	
 	
 	<footer>
 	
@@ -51,7 +16,8 @@
 
 	</footer>
 
-<!-- JavaScript at the bottom for fast page loading -->
+
+	<!-- JavaScript at the bottom for fast page loading -->
 	
 	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

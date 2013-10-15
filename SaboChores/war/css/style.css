@@ -732,7 +732,9 @@ img {
 }
 
 #overlay_form,
-#overlay_form2{
+#overlay_form2,
+#add_form,
+#status_form{
 position: absolute;
 border: 5px solid gray;
 padding: 10px;
