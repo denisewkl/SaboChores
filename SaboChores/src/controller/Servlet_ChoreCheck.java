@@ -48,7 +48,14 @@ public class Servlet_ChoreCheck  extends HttpServlet{
 		} else if (choreStatus.equalsIgnoreCase("In-Progress")) {
 			currentChore.setStatus("Completed");
 			System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
-		} else if (choreStatus.equalsIgnoreCase("Completed")) {
+		} else if (choreStatus.equalsIgnoreCase("Redeem")) {
+			//update the points.
+			currentChild.setPoints(currentChild.getPoints() + currentChore.getChorePoints());
+			
+			//remove the current chore for the current user.
+			choreMgr.removeChore(currentChore.getChoreID(), currentChild.getUserName());
+			
+			response.sendRedirect("child-dashboard");
 			
 		}else if (choreStatus.equalsIgnoreCase("Saboed")) {
 			currentChore.setStatus("In-Progress");

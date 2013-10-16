@@ -19,7 +19,7 @@
 		
 	 	<% for (Chore c: allChoresToThisUser) { %>
 	 		<tr>
-			 	<td><%=c.getChoreID()%>: <%=c.getTaskDescription()%> : <%=c.getChoreStatus()%></td>
+			 	<td><%=c.getChoreID()%>: <%=c.getTaskDescription()%> : <%=c.getChoreStatus()%> : Taken by <%=c.getChoreTakenBy()%></td>
 			 	
 			 	<% if (c.getChoreStatus().equalsIgnoreCase("Available")) { %>
 			 		<form method = "post" action = "/chorecheck"> 
@@ -47,9 +47,9 @@
 			 		</form>
 			 	<% } else {%>
 			 		<form method = "post" action = "/chorecheck"> 
-			 		<td><input type="submit" value="Completed" id="submit" /></td>
+			 		<td><input type="submit" value="Redeem" id="submit" /></td>
 			 		<td>Points: <%= c.getChorePoints() %> </td>
-			 		<input type = "hidden" name = "choreStatus" value = "Completed" />
+			 		<input type = "hidden" name = "choreStatus" value = "Redeem" />
 			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } %>

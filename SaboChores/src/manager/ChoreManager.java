@@ -13,19 +13,23 @@ public class ChoreManager implements java.io.Serializable {
 		//Chore status
 		//Available
 		//In-Progress
-		//Completed (Means pending on parents to approve and award the points over to the child)
+		//Redeem Points (Award points to the user)
 		//Saboed (Someone sabo the mentioned Child)
 		
-		Chore chore1 = new Chore(1, "Sweep the floor", "In-Progress", 4, "agurz","");
-		Chore chore2 = new Chore(2, "Clean up dinner table", "Available", 2, "freda","");
-		Chore chore3 = new Chore(3, "Buy toilet paper", "Available", 2, "freda","");
-		Chore chore4 = new Chore(4, "Bathe the dog", "Completed", 3, "agurz","");
-		Chore chore5 = new Chore(5, "Bathe the cat", "Available", 3, "denise","");
-		Chore chore6 = new Chore(6, "Bathe the hamster", "Saboed", 2, "agurz","freda");
-		Chore chore7 = new Chore(7, "Change sofa seats", "Available", 4, "denise","");
-		Chore chore8 = new Chore(8, "Wash the car", "Available", 6, "rafael","");
-		Chore chore9 = new Chore(9, "Clean the window", "Available", 5, "agurz","");
-		Chore chore10 = new Chore(10, "Clean the toilet", "Available", 4, "agurz","");
+		
+		//id, task description, task status, points, owner, saboed name, empire
+		Chore chore1 = new Chore(1, "Sweep the floor", "In-Progress", 4, "agurz","", "Empire 2");
+		Chore chore2 = new Chore(2, "Clean up dinner table", "In-Progress", 2, "freda","", "Empire 2");
+		Chore chore3 = new Chore(3, "Buy toilet paper", "Available", 2, "","", "Empire 2");
+		Chore chore4 = new Chore(4, "Bathe the dog", "Redeem", 3, "agurz","", "Empire 2");
+		Chore chore5 = new Chore(5, "Bathe the cat", "In-Progress", 3, "denise","", "Empire 1");
+		Chore chore6 = new Chore(6, "Bathe the hamster", "Saboed", 2, "agurz","freda", "Empire 2");
+		Chore chore7 = new Chore(7, "Change sofa seats", "Available", 4, "","", "Empire 1");
+		Chore chore8 = new Chore(8, "Wash the car", "Available", 6, "","", "Empire 3");
+		Chore chore9 = new Chore(9, "Clean the window", "Available", 5, "","", "Empire 2");
+		Chore chore10 = new Chore(10, "Clean the toilet", "Available", 4, "","", "Empire 2");
+
+		
 		allChores.add(chore1);
 		allChores.add(chore2);
 		allChores.add(chore3);
@@ -58,9 +62,26 @@ public class ChoreManager implements java.io.Serializable {
 	public List<Chore> getChoreToSpecificMember(String username) {
 		List<Chore> choresToDoTemp = new ArrayList<Chore>();
 		
-		for (Chore c: this.getAllChores()) {
-			if (c.getChoreTakenBy().equalsIgnoreCase(username)) {
-				choresToDoTemp.add(c);
+		Object user = FamilyManager.getInstance().getUser(username);
+		
+		if (user instanceof Child) {
+			Child currentChild = (Child) user;
+			
+			for (Chore c: this.getAllChores()) {
+				if (c.getEmpire().equalsIgnoreCase(currentChild.getEmpire()) //if same empire i add in AND
+				&& (c.getChoreTakenBy().equalsIgnoreCase(username) || c.getChoreStatus().equalsIgnoreCase("Available")) //chore belongs to you OR chore status is available i add in. 
+			
+				) {
+					choresToDoTemp.add(c);
+				}
+			}
+		} else {
+			Parent currentParent = (Parent) user;
+			
+			for (Chore c: this.getAllChores()) {
+				if (c.getEmpire().equalsIgnoreCase(currentParent.getEmpire())) {
+					choresToDoTemp.add(c);
+				}
 			}
 		}
 		
@@ -71,11 +92,27 @@ public class ChoreManager implements java.io.Serializable {
 	public List<Chore> getChoreToSabo (String username) {
 		List<Chore> choresToSabo = new ArrayList<Chore>();
 		
-		for (Chore c: this.getAllChores()) {
-			if (c.getChoreTakenBy().equals(username) && (c.getChoreStatus().equalsIgnoreCase("Available") || c.getChoreStatus().equalsIgnoreCase("Saboed"))) {
-				choresToSabo.add(c);
-			}
-		}		
+		
+		Object user = FamilyManager.getInstance().getUser(username);
+		
+		if (user instanceof Child) {
+			Child currentChild = (Child) user;
+			for (Chore c: this.getAllChores()) {
+				if (c.getEmpire().equalsIgnoreCase(currentChild.getEmpire()) &&
+						c.getChoreStatus().equalsIgnoreCase("Available") || c.getChoreStatus().equalsIgnoreCase("Saboed")) {
+					choresToSabo.add(c);
+				}
+			}		
+		} else {
+			Parent curentParent = (Parent) user;
+			for (Chore c: this.getAllChores()) {
+				if (c.getChoreStatus().equalsIgnoreCase("Available") || c.getChoreStatus().equalsIgnoreCase("Saboed")) {
+					choresToSabo.add(c);
+				}
+			}		
+		}
+		
+		
 		return choresToSabo;
 	}
 	
@@ -92,6 +129,20 @@ public class ChoreManager implements java.io.Serializable {
 			}
 		}
 		return null;
+	}
+	
+	//removing the specific chore with the given username and empire
+	public void removeChore (int choreID, String username) {
+				
+		for (int i = 0; i < allChores.size(); i++) {
+			Chore c = allChores.get(i);
+			
+			//if chore ID matches and it belongs to the specific user.
+			if (c.getChoreID() == choreID && c.getChoreTakenBy().equalsIgnoreCase(username)) {
+				allChores.remove(i);
+			}
+		}
+		
 	}
 	
 }
