@@ -40,34 +40,36 @@ function showStatsform(a)
 	 	<h2 class="heading" align="center">Dashboard</h2>
 	 	
 	 	<%
-	 	ArrayList<String> al = new ArrayList<String>();
-	 	
-	 	if(session.getAttribute("choreList")==null){
-	 		al.add("Wash the Car,4,Available");
-		 	al.add("Bathe the Dog,2,In Progress");
-		 	session.setAttribute("choreList",al);
+	 	List<Chore> al = new ArrayList<Chore>();
+	 	if(choreMgr.getAllChores()!=null){
+	 	for(Chore c: choreMgr.getAllChores()){
+	 		if(c.getEmpire().equals(currentParent.getEmpire())){
+	 			al.add(c);
+	 		}
+	 		
 	 	}
-	 	else{		
-	 		al = (ArrayList<String>)session.getAttribute("choreList");
 	 	}
-	 	
+
 	 	
 	 	%>
 <form onsubmit="">
 	 	<table width="100%">
 	 	<thead><h5>Chores</h5></thead>
 	 	<%
-	 	for(String s: al){
-	 		String[] arr= s.split(",");
-	 		
-	 		%>
+	 	for(Chore c: al){
+		%>
+
 	 		<tr>
-		 	<td><input type="checkbox" name="chore" value='<%=arr[0]+','+arr[1]+','+arr[2]%>'><%=arr[0] %></td>
-		 	<td><input type="button" name="status" value='<%=arr[2] %>' disabled/></td>
-		 	<td><%=arr[1] %> points</td>
+		 	<td><input type="checkbox" name="chore" value='<%=c.getChoreID() %>'><%=c.getTaskDescription() %></td>
+		 	<td><input type="button" name="status" value='<%=c.getChoreStatus() %>'></td>
+		 	<td><%=c.getChorePoints() %> points</td>
 		 	</tr>
-	 		<%
+
+		 	
+	 	<% 	
 	 	}
+	 	
+
 	 	%>
 	 	
 	 	</table>
@@ -88,7 +90,7 @@ function showStatsform(a)
 	  	<!--  
 	  	<div id="status_form" style="display:none">
 	  	<h6>Chore</h6>
-	  	<%---
+	  	
 	  	String status=request.getParameter("status");
 	  	String stats="";
 	  	if(status!=null){
@@ -111,21 +113,27 @@ function showStatsform(a)
 
 	  	</p>
 	  <%
+	  //do this part
 	  String choice=request.getParameter("choice");
 	  String chore[]= request.getParameterValues("chore");
-	  System.out.println(choice);
+	  
+	  String a="";
+	  
 	  if(chore != null && choice.equals("Yes"))
 	  {
 	  for(int i=0; i<chore.length; i++){
-		for(int x=0; x<al.size();x++){
-			if(al.get(x).equals(chore[i])){
-				System.out.println(al.get(x));
-				al.remove(x);
+		  a=chore[i];
+		  
+		  int aInt = Integer.parseInt(a);
+		  Chore getChore=choreMgr.getChore(aInt);
+			
+			if(getChore.getChoreID() == aInt){
+
+				choreMgr.getAllChores().remove(choreMgr.getChore(aInt));
 
 			}
-		}
+		
 	  }
-	  session.setAttribute("choreList", al);
 	  response.sendRedirect("admin-dashboard.jsp");
 	  }
 	 

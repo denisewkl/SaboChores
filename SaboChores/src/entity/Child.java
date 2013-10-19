@@ -10,13 +10,14 @@ public class Child implements java.io.Serializable {
 	int points;
 	int saboTix;
 	int moneyTix;
+	int reward;
 	
 	//public constructor
 	public Child() {	
 	}
 	
 	//new child with the following attributes.
-	public Child(String username, String password, String title, String empire, int points, int saboTix, int moneyTix) {
+	public Child(String username, String password, String title, String empire, int points, int saboTix, int moneyTix,int reward) {
 		this.username = username;
 		this.password = password;
 		this.title = title;
@@ -24,6 +25,7 @@ public class Child implements java.io.Serializable {
 		this.points = points;
 		this.saboTix = saboTix;
 		this.moneyTix = moneyTix;
+		this.reward=reward;
 	}
 		
 	//setting the title of the child.
@@ -49,6 +51,11 @@ public class Child implements java.io.Serializable {
 	//setting the number of money tix the child has.
 	public void setMoneyTix(int moneyTix) {
 		this.moneyTix= moneyTix;
+	}
+	
+	//setting the reward amt
+	public void setReward(int reward) {
+		this.reward= reward;
 	}
 	
 	//getting name of the child.
@@ -86,5 +93,9 @@ public class Child implements java.io.Serializable {
 		return this.moneyTix;
 	}
 	
+	//getting the money tix of the child.
+	public int getReward() {
+		return this.reward;
+	}
 	
 }

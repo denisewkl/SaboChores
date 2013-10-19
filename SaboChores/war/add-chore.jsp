@@ -24,7 +24,7 @@
 	 	<p>
 	 	<table width="100%">
 	 	<tr>
-	 	<td><input type="button" value="Back" onclick="goBack()"></td>
+	 	<td><input type="button" value="Back" onclick="JavaScript:window.location='admin-dashboard.jsp';"></td>
 	 	<td><input type="submit" value="Confirm" id="submit" /></td>
 	 	</tr>
 	  	</table>

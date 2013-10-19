@@ -1,4 +1,10 @@
-<%@ page import="java.util.*" %>
+<%@ page import="controller.*"%>
+<%@ page import="entity.*"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="manager.*"%>
+<%@ page import="java.util.*"%>
+<%@ page import="java.text.*"%>
+<%@ page import="java.io.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -53,6 +59,10 @@ function toggle(Info) {
                 response.sendRedirect("index.jsp");
                 return;
       	}
+	
+   	ShopManager shopMgr = ShopManager.getInstance();
+   	FamilyManager familyMgr = FamilyManager.getInstance();
+   	ChoreManager choreMgr = ChoreManager.getInstance();
 %>
 
 
@@ -63,11 +73,7 @@ function toggle(Info) {
 		
 	
 	
-		ArrayList<String> allUsers=new ArrayList<String>();
-		allUsers.add("Benny,5,benny89");
-		allUsers.add("Agurz,4,password");
-		allUsers.add("Freda,6,freda123");
-		session.setAttribute("allUserList",allUsers);
+
 		%>
 		<!-- header wrapper -->
 		<div class="wrapper cf">
@@ -83,11 +89,11 @@ function toggle(Info) {
 				<td>&nbsp</td>
 				</tr>
 				<tr>
-				<td>Welcome, currentParent.getUserName()&nbsp</td>
+				<td>Welcome, <%= currentParent.getUserName()%>&nbsp</td>
 				<td></td>
 				</tr>
 				<tr>
-				<td>Empire: currentParent.getEmpire()</td>
+				<td>Empire: <%= currentParent.getEmpire()%></td>
 				<td><a href="logout.jsp">Logout</a></td>
 				</tr>
 				<tr>

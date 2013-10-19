@@ -1,18 +1,20 @@
+<%@include file="header-admin.jsp" %>
 <%@ page import="java.util.*" %>
 <%
 	String chore=request.getParameter("nChore");
 	String points=request.getParameter("points");
-	String forArrayInput=chore+","+points+",Available";
-	ArrayList<String> list=(ArrayList<String>)session.getAttribute("choreList");
+	Chore c=new Chore(choreMgr.getAllChores().size()+1,chore,"Available",Integer.parseInt(points),"","",currentParent.getEmpire());
+
+
+	
 	String error="";
 	
 	
 		if(chore!=null && points!=null && !points.equals("0")){
 			
 
-			System.out.println(list.toString());
 	
-			list.add(forArrayInput);
+			choreMgr.addChore(c);
 			error="Chore Added!";
 		}
 		else{
@@ -21,6 +23,7 @@
 			
 		}
 	session.setAttribute("error",error);
-	session.setAttribute("choreList",list);
 	response.sendRedirect("add-chore.jsp");
+	
+
 	%>

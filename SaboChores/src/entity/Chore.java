@@ -18,7 +18,7 @@ public class Chore implements java.io.Serializable {
 		this.points = points;
 		this.takenBy = takenBy;
 		this.saboBy = saboBy;
-		this.empire = empire;
+		this.empire=empire;
 	}
 	
 	public void setStatus(String status) {

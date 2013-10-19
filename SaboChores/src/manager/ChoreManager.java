@@ -1,6 +1,7 @@
 package manager;
 
 import entity.*; 
+
 import java.util.*;
 
 public class ChoreManager implements java.io.Serializable {
@@ -13,33 +14,38 @@ public class ChoreManager implements java.io.Serializable {
 		//Chore status
 		//Available
 		//In-Progress
-		//Redeem Points (Award points to the user)
+		//Completed (Means pending on parents to approve and award the points over to the child)
 		//Saboed (Someone sabo the mentioned Child)
 		
-		
-		//id, task description, task status, points, owner, saboed name, empire
-		Chore chore1 = new Chore(1, "Sweep the floor", "In-Progress", 4, "agurz","", "Empire 2");
-		Chore chore2 = new Chore(2, "Clean up dinner table", "In-Progress", 2, "freda","", "Empire 2");
-		Chore chore3 = new Chore(3, "Buy toilet paper", "Available", 2, "","", "Empire 2");
-		Chore chore4 = new Chore(4, "Bathe the dog", "Redeem", 3, "agurz","", "Empire 2");
-		Chore chore5 = new Chore(5, "Bathe the cat", "In-Progress", 3, "denise","", "Empire 1");
-		Chore chore6 = new Chore(6, "Bathe the hamster", "Saboed", 2, "agurz","freda", "Empire 2");
-		Chore chore7 = new Chore(7, "Change sofa seats", "Available", 4, "","", "Empire 1");
-		Chore chore8 = new Chore(8, "Wash the car", "Available", 6, "","", "Empire 3");
-		Chore chore9 = new Chore(9, "Clean the window", "Available", 5, "","", "Empire 2");
-		Chore chore10 = new Chore(10, "Clean the toilet", "Available", 4, "","", "Empire 2");
-
-		
+		Chore chore1 = new Chore(allChores.size()+1, "Sweep the floor", "In-Progress", 4, "agurz","", "Empire 2");
 		allChores.add(chore1);
+		
+		Chore chore2 = new Chore(allChores.size()+1, "Clean up dinner table", "In-Progress", 2, "freda","", "Empire 2");
 		allChores.add(chore2);
+		
+		Chore chore3 = new Chore(allChores.size()+1, "Buy toilet paper", "Available", 2, "","", "Empire 2");
 		allChores.add(chore3);
+		
+		Chore chore4 = new Chore(allChores.size()+1, "Bathe the dog", "Redeem", 3, "agurz","", "Empire 2");
 		allChores.add(chore4);
+		
+		Chore chore5 = new Chore(allChores.size()+1, "Bathe the cat", "In-Progress", 3, "denise","", "Empire 1");
 		allChores.add(chore5);
+		
+		Chore chore6 = new Chore(allChores.size()+1, "Bathe the hamster", "Saboed", 2, "agurz","freda", "Empire 2");
 		allChores.add(chore6);
+		
+		Chore chore7 = new Chore(allChores.size()+1, "Change sofa seats", "Available", 4, "","", "Empire 1");
 		allChores.add(chore7);
+		
+		Chore chore8 = new Chore(allChores.size()+1, "Wash the car", "Available", 6, "","", "Empire 3");
 		allChores.add(chore8);
+		
+		Chore chore9 = new Chore(allChores.size()+1, "Clean the window", "Available", 5, "","", "Empire 2");
 		allChores.add(chore9);
-		allChores.add(chore10);		
+		
+		Chore chore10 = new Chore(allChores.size()+1, "Clean the toilet", "Available", 4, "","", "Empire 2");
+		allChores.add(chore10);	
 	}
 	
 	/**
@@ -58,7 +64,6 @@ public class ChoreManager implements java.io.Serializable {
 		return allChores;
 	}
 	
-	//to get the specific chores by the username
 	public List<Chore> getChoreToSpecificMember(String username) {
 		List<Chore> choresToDoTemp = new ArrayList<Chore>();
 		
