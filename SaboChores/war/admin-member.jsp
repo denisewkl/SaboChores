@@ -28,19 +28,11 @@ function showform2(a)
 	<!-- MAIN -->
 	<div role="main" id="main">
 		<div class="wrapper">
-			<%
-	 	ArrayList<String> al = new ArrayList<String>();
+		<%
+	 		List<Child> al = familyMgr.getChildren(currentParent.getEmpire());
 			String message="";
 			
-	 	if(session.getAttribute("rewards")==null){
-	 		al.add("Agurz,4,password");
-		 	al.add("Freda,6,freda123");
-		 	session.setAttribute("rewards",al);
-	 	}
-	 	else{		
-	 		al = (ArrayList<String>)session.getAttribute("rewards");
-	 	}
-	 	
+	 
 	 	
 	 	%>
 	 	<h2 class="heading" align="center">Member Management</h2>
@@ -52,13 +44,12 @@ function showform2(a)
 	 	<td><h5>Password</h5></td>
 	 	</tr>
 	 	<%
-	 	for(String s: al){
-	 		String[] arr= s.split(",");
+	 	for(Child c: al){
 	 		
 	 		%>
 	 		<tr>
-		 	<td><input type="checkbox" name="user" value='<%=arr[0]+','+arr[1]+','+arr[2]%>'><%=arr[0] %></td>
-		 	<td><%=arr[2] %></td>
+		 	<td><input type="checkbox" name="user" value='<%=c.getUserName() %>'><%=c.getUserName() %></td>
+		 	<td><%=c.getPassword() %></td>
 		 	</tr>
 	 		<%
 	 	}
@@ -88,35 +79,26 @@ function showform2(a)
 		<input type="button" value="Back" name="choice" onclick="showform2(2)"/>
 		<input type="submit" value="Add" name="choice"/>
 		
-		<%
-		ArrayList<String> ul=(ArrayList<String>)session.getAttribute("allUserList");
-		ArrayList<String> checkList=(ArrayList<String>)session.getAttribute("rewards");
-		String addUser=request.getParameter("user_add");
 		
-				
-			
-		if(ul!=null && addUser!=null){
-			for(String check:checkList){
-				String[] checker= check.split(",");
-				if((checker[0].toLowerCase()).equals(addUser.toLowerCase())){
-					//message="User is already in your household.";
-					//session.setAttribute("message",message);
+		
+<% 
+		String addUser=request.getParameter("user_add");
+// update child empire here DO!
+
+
+		if(addUser!=null){
+			List<Child> cl=familyMgr.getAllChildren();
+			for(int i=0; i<cl.size(); i++){
+				if(cl.get(i).getUserName().equals(addUser) && cl.get(i).getEmpire().equals("")){
+					cl.get(i).setEmpire(currentParent.getEmpire());
+					response.sendRedirect("admin-member.jsp");
+				}else{
+					
+						String errorMsg="User does not exist.";
+						session.setAttribute("addError",errorMsg);
+
 				}
 			}
-					for(String x: ul){
-						String[] array= x.split(",");
-						
-							if((addUser).toLowerCase().equals(array[0].toLowerCase())){
-								checkList.add(x);
-								response.sendRedirect("admin-member.jsp");
-								
-							}else{
-								
-								//message="User does not exist!";
-								//session.setAttribute("message",message);
-							}
-							
-						}
 
 		}	
 			
@@ -125,25 +107,37 @@ function showform2(a)
 		</div>
 		
 		</form>
-		
+		<%
+
+		if(session.getAttribute("addError")!=null){
+			out.println(session.getAttribute("addError"));
+			session.setAttribute("addError","");
+		}
+		%>
 		<%
 	  String choice=request.getParameter("choice");
 	  String user[]= request.getParameterValues("user");
+	  String a="";
+
 	  if(user != null && choice.equals("Yes"))
 	  {
-	  for(int i=0; i<user.length; i++){
-		for(int x=0; x<al.size();x++){
-			if(al.get(x).equals(user[i])){
+		  for(int i=0; i<user.length; i++){
+			  a=user[i];
+			  Child getChild=familyMgr.getChildrenByName(a);
 
-				al.remove(x);
+				if((getChild.getUserName()).equals(a)){
 
-			}
-		}
+					familyMgr.getChildrenByName(a).setEmpire("");
+					
+
+					response.sendRedirect("admin-member.jsp");
+					break;
+				}
+				
+			
+		  }
+	  
 	  }
-	  session.setAttribute("rewards", al);
-	  response.sendRedirect("admin-member.jsp");
-	  }
-	 
 	  %>
 	  </div>
 	</div>

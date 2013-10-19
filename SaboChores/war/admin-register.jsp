@@ -40,7 +40,7 @@
 			
 	 	<h2 class="heading">Create Account</h2>
 				<!-- form -->
-				<form id="contactForm" action="character.jsp" method="post">
+				<form id="contactForm" action="/parentregistercheck" method="post">
 					<fieldset>
 						
 						<p>
@@ -59,13 +59,25 @@
 						</p>
 					
 						
-						
+						<p>
+							<label for="empire" >Empire</label>
+							<input name="empire"  id="empire" type="text" class="form-poshytip" title="Enter your empire" />
+						</p>
 						
 						<p><input type="submit" value="Create" id="submit" /> </p>
 					</fieldset>
 					
 				</form>
-	  
+	  	  			<%
+	  			String m=(String)request.getAttribute("msg");
+				if(m!=null){
+					
+				out.println(m);	
+				}
+									
+	  			
+	  			
+	  			%>
 	  
 	  </div>
 	</div>

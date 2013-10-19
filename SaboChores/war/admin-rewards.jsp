@@ -13,18 +13,10 @@ function showform(a)
 </script>
 
 			
-<%
-	 	ArrayList<String> al = new ArrayList<String>();
-	 	
-	 	if(session.getAttribute("rewards")==null){
-	 		al.add("Agurz,4,password");
-		 	al.add("Freda,6,freda123");
-		 	session.setAttribute("rewards",al);
-	 	}
-	 	else{		
-	 		al = (ArrayList<String>)session.getAttribute("rewards");
-	 	}
-	 	
+		<%
+	 		List<Child> al = familyMgr.getChildren(currentParent.getEmpire());
+			String message="";
+
 	 	
 	 	%>
 	
@@ -41,16 +33,17 @@ function showform(a)
 	 	<td><h5>Reward</h5></td>
 	 	</tr>
 	 	<%
-	 	for(String s: al){
-	 		String[] arr= s.split(",");
-	 		System.out.println(arr[2]);
+		for(Child c: al){
+			if(c.getReward()!=0){
+	 		
 	 		%>
 	 		<tr>
-		 	<td><input type="checkbox" name="user" value='<%=arr[0]+','+arr[1]+','+arr[2]%>'><%=arr[0] %></td>
-		 	<td>$<%=arr[1] %></td>
+		 	<td><input type="checkbox" name="user" value='<%=c.getUserName() %>'><%=c.getUserName() %></td>
+		 	<td><%="$"+c.getReward()%></td>
 		 	</tr>
 	 		<%
-	 	}
+	 		}
+		}
 	 	%>
 	 	
 	 	</table>
@@ -74,18 +67,17 @@ function showform(a)
  <%
 	  String choice=request.getParameter("choice");
 	  String user[]= request.getParameterValues("user");
+	  System.out.println("test2");
 	  if(user != null && choice.equals("Yes"))
 	  {
-	  for(int i=0; i<user.length; i++){
-		for(int x=0; x<al.size();x++){
-			if(al.get(x).equals(user[i])){
-
-				al.remove(x);
-
-			}
+	  for(int i=0; i<user.length; i++){;
+		  Child getChild=familyMgr.getChildrenByName(user[i]);
+		  
+		if(user[i].equals(getChild.getUserName())){
+			familyMgr.getChildrenByName(user[i]).setReward(0);
+			System.out.println("test1");
 		}
 	  }
-	  session.setAttribute("rewards", al);
 	  response.sendRedirect("admin-rewards.jsp");
 	  }
 	 

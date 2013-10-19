@@ -38,17 +38,17 @@ public class Servlet_ChoreCheck  extends HttpServlet{
 		Chore currentChore = choreMgr.getChore(choreID);
 		
 		//System.out.println("Chore: " + currentChore.getTaskDescription());
-		System.out.println("BEFORE Chore button clicked: " + currentChore.getChoreStatus());
+		//System.out.println("BEFORE Chore button clicked: " + currentChore.getChoreStatus());
 				
 		
 		if (choreStatus.equalsIgnoreCase("Available")) {
 			currentChore.setStatus("In-Progress");
 			currentChore.setChoreTakenBy(currentChild.getUserName());
-			System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
+			//System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
 		} else if (choreStatus.equalsIgnoreCase("In-Progress")) {
 			currentChore.setStatus("Completed");
-			System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
-		} else if (choreStatus.equalsIgnoreCase("Redeem")) {
+			//System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
+		} else if (choreStatus.equalsIgnoreCase("Complete")) {
 			//update the points.
 			currentChild.setPoints(currentChild.getPoints() + currentChore.getChorePoints());
 			
@@ -59,7 +59,7 @@ public class Servlet_ChoreCheck  extends HttpServlet{
 			
 		}else if (choreStatus.equalsIgnoreCase("Saboed")) {
 			currentChore.setStatus("In-Progress");
-			System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
+			//System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
 		}
 		
 		response.sendRedirect("child-dashboard.jsp");		

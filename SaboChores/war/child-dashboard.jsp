@@ -2,7 +2,7 @@
 
 	<!-- MAIN -->
 	<%
-	List<String> allFamilyMembers = familyMgr.getAllFamilyMembers(currentChild);		
+	List<Child> allChildrenInSameEmpire = familyMgr.getChildrenInChildDashBoard(currentChild);		
 	List<Chore> allChoresToThisUser = choreMgr.getChoreToSpecificMember(currentChild.getUserName());
 	List<Chore> getChoreToSabo = choreMgr.getChoreToSabo(currentChild.getUserName());
 	%>
@@ -47,9 +47,9 @@
 			 		</form>
 			 	<% } else {%>
 			 		<form method = "post" action = "/chorecheck"> 
-			 		<td><input type="submit" value="Redeem" id="submit" /></td>
+			 		<td><input type="submit" value="Complete" id="submit" /></td>
 			 		<td>Points: <%= c.getChorePoints() %> </td>
-			 		<input type = "hidden" name = "choreStatus" value = "Redeem" />
+			 		<input type = "hidden" name = "choreStatus" value = "Complete" />
 			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } %>
@@ -88,9 +88,12 @@
 		<label>Who?</label><br>
 		<select name = "saboedName"> 
 			<%
-				for (String name: allFamilyMembers) { %> 
-					<option value ="<%=name%>"><%=name%></option>
-			<%	}%>
+				for (Child c: allChildrenInSameEmpire) { 
+					if (c.getEmpire().equalsIgnoreCase(currentChild.getEmpire())) {%>
+					 
+					<option value ="<%=c.getUserName()%>"><%=c.getUserName()%></option>
+			<%		}
+				}%>
 		</select>
 		<br />
 		Chore to sabo: <br />
