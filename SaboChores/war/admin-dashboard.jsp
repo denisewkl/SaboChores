@@ -87,28 +87,7 @@ function showStatsform(a)
 		<input type="button" value="No" name="choice" onclick="showform(2)"/>
 		<input type="submit" value="Yes" name="choice" id="submit"/>
 	  	</div>
-	  	<!--  
-	  	<div id="status_form" style="display:none">
-	  	<h6>Chore</h6>
-	  	
-	  	String status=request.getParameter("status");
-	  	String stats="";
-	  	if(status!=null){
-		  	if(status.equals("Available") || status.equals("Sabotaged!")){
-		  		stats="Start on Chore?";
-		  	}else if(status.equals("In Progress")){
-		  			stats="Complete Chore?";
-		  	}
-	  	}
-	  		
-	  	
-	  	
-	  	--%>
-		<label><%--=stats --%></label></br></br>
-		<input type="button" value="No" name="choice" onclick="showStatsform(2)"/>
-		<input type="submit" value="Yes" name="choice" id="submit"/>
-	  	</div>-->
-	  	
+	  		  	
 	  	</form>
 
 	  	</p>
@@ -138,8 +117,7 @@ function showStatsform(a)
 	  }
 	 
 	  %>
-	  
-	  <div align="center"><a href="admin-rewards.jsp">View Child Rewards</a></div>
+
 	  </div>
 	</div>
 	<!-- ENDS MAIN -->

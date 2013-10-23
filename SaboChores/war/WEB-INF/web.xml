@@ -10,6 +10,15 @@
 	
 
 	<servlet>
+		<servlet-name>Servlet_MemberManagement</servlet-name>
+		<servlet-class>controller.Servlet_MemberManagement</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet_MemberManagement</servlet-name>
+		<url-pattern>/memberManagementCheck</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>Servlet_ChildLoginCheck</servlet-name>
 		<servlet-class>controller.Servlet_ChildLoginCheck</servlet-class>
 	</servlet>

@@ -118,6 +118,7 @@ function toggle(Info) {
 				<ul id="nav" class="sf-menu">
 					<li class="current-menu-item"><a href="admin-dashboard.jsp">DASHBOARD<i><b></b></i></a></li>
 					<li><a href="admin-member.jsp">MEMBER MANAGEMENT<i><b></b></i></a></li>
+					<li><a href="admin-rewards.jsp">View Child Rewards<i><b></b></i></a></li>
 					<li><a href="admin-faq.jsp">FAQ<i><b></b></i></a></li>				</ul>
 				<div id="combo-holder"></div>
 			</div>

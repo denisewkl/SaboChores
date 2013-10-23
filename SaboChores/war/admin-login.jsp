@@ -8,7 +8,12 @@
 <head>
 	<meta charset="utf-8">
 	
-	
+	<script>
+	function goBack()
+	  {
+	  window.history.back()
+	  }
+	</script>
 	
 	<title>Sabo Chores</title>
 	<meta name="description" content="">
@@ -94,7 +99,7 @@ $(window).bind('resize',positionPopup);
 	<div role="main" id="main">
 		<div class="wrapper">
 			
-	 	<h2 class="heading">Login</h2>
+	 	<h2 class="heading">Parent Login</h2>
 				<!-- form -->
 				<form id="contactForm" action="/parentlogincheck" method="post">
 					<fieldset>

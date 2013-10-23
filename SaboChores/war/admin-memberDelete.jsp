@@ -12,75 +12,65 @@ function showform(a)
  
 </script>
 
-			
-		<%
-	 		List<Child> al = familyMgr.getChildren(currentParent.getEmpire());
-			String message="";
-	 	%>
+<script type="text/javascript">
+ 
+function showform2(a)
+{
+	if(a==1)
+    	document.getElementById("add_form").style.display="block";
+      
+	else
+		document.getElementById("add_form").style.display="none";
+}
+ 
+</script>		
 	
 	<!-- MAIN -->
 	<div role="main" id="main">
 		<div class="wrapper">
-			
-	 	<h2 class="heading" align="center">Child Rewards</h2>
-<form onsubmit="">
+		<%
+	 		List<Child> al = familyMgr.getChildren(currentParent.getEmpire());
+			System.out.println("Size of the family: " + al.size());
+			String message="";
+	 	%>
+	 	<h2 class="heading" align="center">Member Management</h2>
+		<form onsubmit="" action="/memberManagementCheck">
 	 	<table width="100%">
 	 	
 	 	<tr>
 	 	<td><h5>Child</h5></td>
-	 	<td><h5>Reward</h5></td>
+	 	<td><h5>Password</h5></td>
 	 	</tr>
 	 	<%
-		for(Child c: al){
-			if(c.getReward()!=0){
+	 	for(Child c: al){
 	 		
 	 		%>
 	 		<tr>
 		 	<td><input type="checkbox" name="user" value='<%=c.getUserName() %>'><%=c.getUserName() %></td>
-		 	<td><%="$"+c.getReward()%></td>
+		 	<td><%=c.getPassword() %></td>
 		 	</tr>
 	 		<%
-	 		}
-		}
+	 	}
 	 	%>
 	 	
 	 	</table>
 	 	<p>
 	 	<table width="100%">
 	 	<tr>
-	 	<td><input type="button" value="Back" onclick="goBack()"></td>
-	 	<td><input type="button" value="Confirm" onclick="showform(1)" /></td>
+	 	<td><input type="button" value="Delete" onclick="showform(1)"></td>
 	 	</tr>
 	  	</table>
-	  	
-	  	<div id="overlay_form" style="display:none">
-		<h6>Reward</h6>
-		<label>Confirm Reward Redemption?</label></br></br>
+	  	</p>
+	  
+		<div id="overlay_form" style="display:none">
+		<h6>Delete User</h6>
+		<label>Confirm Delete User?</label></br></br>
 		<input type="button" value="No" name="choice" onclick="showform(2)"/>
 		<input type="submit" value="Yes" name="choice" id="close"/>
+		<input type = "hidden" value = "delete" name = "type" />
 		</div>
 		
 		</form>
-	  	</p>
- <%
-	  String choice=request.getParameter("choice");
-	  String user[]= request.getParameterValues("user");
-	  System.out.println("test2");
-	  if(user != null && choice.equals("Yes"))
-	  {
-	  for(int i=0; i<user.length; i++){;
-		  Child getChild=familyMgr.getChildrenByName(user[i]);
-		  
-		if(user[i].equals(getChild.getUserName())){
-			familyMgr.getChildrenByName(user[i]).setReward(0);
-			System.out.println("test1");
-		}
-	  }
-	  response.sendRedirect("admin-rewards.jsp");
-	  }
-	 
-	  %>
-
 	  </div>
 	</div>
 	<!-- ENDS MAIN -->

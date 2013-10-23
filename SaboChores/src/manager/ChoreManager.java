@@ -26,7 +26,7 @@ public class ChoreManager implements java.io.Serializable {
 		Chore chore3 = new Chore(allChores.size()+1, "Buy toilet paper", "Available", 2, "","", "Empire 2");
 		allChores.add(chore3);
 		
-		Chore chore4 = new Chore(allChores.size()+1, "Bathe the dog", "Redeem", 3, "agurz","", "Empire 2");
+		Chore chore4 = new Chore(allChores.size()+1, "Bathe the dog", "Complete", 3, "agurz","", "Empire 2");
 		allChores.add(chore4);
 		
 		Chore chore5 = new Chore(allChores.size()+1, "Bathe the cat", "In-Progress", 3, "denise","", "Empire 1");
@@ -149,5 +149,8 @@ public class ChoreManager implements java.io.Serializable {
 		}
 		
 	}
+	
+	//getting chores that belongs to the specific empire
+	
 	
 }

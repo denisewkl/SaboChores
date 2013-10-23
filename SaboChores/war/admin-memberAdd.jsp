@@ -1,23 +1,68 @@
 <%@include file="header-admin.jsp" %>
 <script type="text/javascript">
  
+function showform(a)
+{
+	if(a==1)
+    	document.getElementById("overlay_form").style.display="block";
+      
+	else
+		document.getElementById("overlay_form").style.display="none";
+}
+ 
+</script>
 
+<script type="text/javascript">
+ 
+function showform2(a)
+{
+	if(a==1)
+    	document.getElementById("add_form").style.display="block";
+      
+	else
+		document.getElementById("add_form").style.display="none";
+}
+ 
 </script>		
 	
 	<!-- MAIN -->
 	<div role="main" id="main">
 		<div class="wrapper">
-
-	 	<h2 class="heading" align="center">Member Management</h2>
-	 	
-		<form action="admin-memberAdd.jsp">
-	 		<input type = "submit" value = "Add" />		
-		</form>
+		<form action = "memberManagementCheck" method = "post">
 		
-		<form action="admin-memberDelete.jsp" method = "post">
-	 		<input type = "submit" value = "Delete" />		
+			<table> 
+				<tr>
+					<td>
+						Child Username
+					</td>
+					<td>
+						Child password
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<input type = "text" name = "childUsername" />
+					</td>
+					<td>
+						<input type = "text" name = "childPassword" />
+					</td>
+				</tr>
+				
+				<tr> 
+					<td>
+						<input type = "reset" value = "Clear" />
+					</td>
+					<td>
+						<input type = "submit" value = "Register Child" />
+					</td>
+				</tr>
+			</table>
+			
+			<input type = "hidden" value = "add" name = "type" />
+			<input type = "hidden" value = "<%=currentParent.getEmpire() %>" name = "empire" />
+			
 		</form>
-		
 		
 	  </div>
 	</div>

@@ -14,6 +14,7 @@ public class FamilyManager implements java.io.Serializable{
 
 	//default constructor
 	public FamilyManager() {		
+		//id,password,title,empire,....
 		Child agurz = new Child("agurz","agurz","Good Kid","Empire 2", 100, 1000, 10000,5);
 		Child freda = new Child("freda","freda","Angel","Empire 2", 100, 100, 1000,10);
 		Child john = new Child("john","john","Angel","Empire 2", 100, 100, 1000,15);
@@ -26,6 +27,7 @@ public class FamilyManager implements java.io.Serializable{
 		allChildren.add(serene);
 		
 		//creating all the parent out first.
+		//id,password,email,empire
 		Parent denise = new Parent("denise","denise","denise@gmail.com","Empire 1");
 		Parent rafael = new Parent("rafael","rafael","rafael@gmail.com","Empire 3");
 		Parent robin = new Parent("robin","robin","robin@gmail.com","Empire 2");
@@ -89,6 +91,7 @@ public class FamilyManager implements java.io.Serializable{
 		allParent.add(p);
 	}
 	
+	//get child based on which empire
 	public List<Child> getChildren(String empire){
 		List<Child> temp=new ArrayList<Child>();
 		for(Child c:this.allChildren){
@@ -138,6 +141,28 @@ public class FamilyManager implements java.io.Serializable{
 			}
 		}
 		return null;
+	}
+	
+	//removing the child from the list
+	public void removeChild (Child c) {
+		allChildren.remove(c);
+	}
+	
+	//adding child to the list
+	public void addChild (Child c) {
+		allChildren.add(c);
+	}
+	
+	//get all children that belongs to your empire
+	public List<Child> getAllChildBelongsToYourEmpire (Parent p) {
+		List<Child> childOfYourEmpire = new ArrayList<Child>();
+		
+		for (Child c: allChildren) {
+			if (c.getEmpire().equalsIgnoreCase(p.getEmpire())) {
+				childOfYourEmpire.add(c);
+			}
+		}		
+		return childOfYourEmpire;		
 	}
 	
 }

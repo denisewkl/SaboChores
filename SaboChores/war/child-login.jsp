@@ -42,7 +42,7 @@
 		<!-- header wrapper -->
 		<div class="wrapper cf">
 			<div id="logo">
-				<a href="index.html" ><img src="img/logo.png" alt="" /></a>
+				<img src="img/logo.png" alt="" />
 			</div>
 		</div><!-- ENDS header wrapper -->
 		
@@ -64,7 +64,7 @@
 	<div role="main" id="main">
 		<div class="wrapper">
 			
-	 	<h2 class="heading">Login</h2>
+	 	<h2 class="heading">Children Login</h2>
 				<!-- form -->
 				<form id="contactForm" action="/childlogincheck" method="post">
 					<fieldset>
@@ -87,9 +87,6 @@
 				</form>
 				
 				<input type="button" value="Back" onclick="goBack()">
-	  			<form action="create.jsp" method="get">
-				    <input type="submit" value="Register" name="Submit" id="frm1_submit" />
-				</form>
 	  
 	  </div>
 	</div>
