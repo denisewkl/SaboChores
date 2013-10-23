@@ -32,17 +32,17 @@ public class Servlet_AdminChoreCheck  extends HttpServlet{
 		
 		String chore[]= request.getParameterValues("chore");
 		
-		System.out.println("Chore check type: " + choreCheckType);
+		//System.out.println("Chore check type: " + choreCheckType);
 		
 		//if user is going to check uncompleted chores and delete it...
 		if (choreCheckType.equalsIgnoreCase("unCompletedChores")) {
-			System.out.println("Uncompleted Chores");
+			//System.out.println("Uncompleted Chores");
 			
 			String a="";
 			String choice=request.getParameter("choice");	
 			
 			if(chore != null && choice.equals("Yes")) {
-				System.out.println("Chore is not empty and yes!");	
+				//System.out.println("Chore is not empty and yes!");	
 				for(int i=0; i<chore.length; i++){
 					a=chore[i];
 					int aInt = Integer.parseInt(a);
@@ -55,7 +55,7 @@ public class Servlet_AdminChoreCheck  extends HttpServlet{
 			response.sendRedirect("admin-dashboard.jsp");
 			}
 			  
-		} else { //if user is going to approve the completed chores. 
+		} else { //if user is going to approve the completed chores. 			
 			
 			//getting the user selected chore. 
 			for (String a: chore) {

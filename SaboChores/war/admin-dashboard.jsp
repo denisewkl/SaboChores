@@ -30,7 +30,7 @@ function showform(a)
 	 	
 	 	
 	 	<!-- Completed chores -->
-	  	<form onsubmit="" action = "/adminChoreCheck" method = "post">
+	  	<form action = "/adminChoreCheck" method = "post">
 	  		
 	  		<!-- To check whether is it completed chores or uncompleted chores -->
 	  		<input type = "hidden" name = "choreCheckType" value = "completedChores" />
@@ -62,7 +62,7 @@ function showform(a)
 
 	  	
 	 	<!-- Uncompleted Chores -->
-		<form onsubmit="" method = "/adminChoreCheck" method = "post">
+		<form action = "/adminChoreCheck" method = "post">
 		
 			<!-- To check whether is it completed chores or uncompleted chores -->
 	  		<input type = "hidden" name = "choreCheckType" value = "unCompletedChores" />
