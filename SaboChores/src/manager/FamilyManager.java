@@ -14,7 +14,7 @@ public class FamilyManager implements java.io.Serializable{
 
 	//default constructor
 	public FamilyManager() {		
-		//id,password,title,empire,....
+		//id,password,title,empire,points,sabotix,moneytix,reward
 		Child agurz = new Child("agurz","agurz","Good Kid","Empire 2", 100, 1000, 10000,5);
 		Child freda = new Child("freda","freda","Angel","Empire 2", 100, 100, 1000,10);
 		Child john = new Child("john","john","Angel","Empire 2", 100, 100, 1000,15);

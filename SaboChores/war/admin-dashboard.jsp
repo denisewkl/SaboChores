@@ -54,13 +54,6 @@ function showform(a)
 	  	
 	  	<!-- End of completed chores -->
 	  	
-	  	
-	  	
-	  	
-	  	
-	  	
-
-	  	
 	 	<!-- Uncompleted Chores -->
 		<form action = "/adminChoreCheck" method = "post">
 		

@@ -75,7 +75,7 @@ public class ChoreManager implements java.io.Serializable {
 			for (Chore c: this.getAllChores()) {
 				if (c.getEmpire().equalsIgnoreCase(currentChild.getEmpire()) //if same empire i add in AND
 				&& (c.getChoreTakenBy().equalsIgnoreCase(username) || c.getChoreStatus().equalsIgnoreCase("Available")) //chore belongs to you OR chore status is available i add in. 
-			
+				
 				) {
 					choresToDoTemp.add(c);
 				}
@@ -93,7 +93,7 @@ public class ChoreManager implements java.io.Serializable {
 		return choresToDoTemp;
 	}
 	
-	//get all chores that are not completed. 
+	//get all chores that are not pending. 
 	public List<Chore> getChoreToSabo (String username) {
 		List<Chore> choresToSabo = new ArrayList<Chore>();
 		
@@ -103,10 +103,13 @@ public class ChoreManager implements java.io.Serializable {
 		if (user instanceof Child) {
 			Child currentChild = (Child) user;
 			for (Chore c: this.getAllChores()) {
+				
 				if (c.getEmpire().equalsIgnoreCase(currentChild.getEmpire()) &&
-						c.getChoreStatus().equalsIgnoreCase("Available") || c.getChoreStatus().equalsIgnoreCase("Saboed")) {
+						(c.getChoreStatus().equalsIgnoreCase("Available") || (c.getChoreStatus().equalsIgnoreCase("Saboed") && !c.getSaboBy().equalsIgnoreCase(username)))
+						) {
 					choresToSabo.add(c);
 				}
+				
 			}		
 		} else {
 			Parent curentParent = (Parent) user;
@@ -185,6 +188,19 @@ public class ChoreManager implements java.io.Serializable {
 			}
 		}
 		return allNotCompletedChoresUnderThisEmpire;
+	}
+	
+	
+	//changing the status of the specific chore
+	public void setChoreStatus (Chore c, String status) {
+		
+		List<Chore> choresForThisEmpire = this.getAllChoresForThisEmpire(c.getEmpire());
+		
+		for (Chore temp: choresForThisEmpire) {
+			if (temp.getChoreID() == c.getChoreID()) {
+				temp.setStatus(status);
+			}
+		}
 	}
 	
 }

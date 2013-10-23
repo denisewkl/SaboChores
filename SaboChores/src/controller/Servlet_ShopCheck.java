@@ -36,6 +36,8 @@ public class Servlet_ShopCheck  extends HttpServlet{
 				//updates the currentChild points a number of saboTix
 				currentChild.setPoints(currentChild.getPoints() - numOfSaboTix * 20);
 				currentChild.setSaboTix(currentChild.getSaboTix() + numOfSaboTix);
+				
+				
 				response.sendRedirect("child-dashboard.jsp");
 			} else {
 				//goes to the error page becos not enough of points to exchange.

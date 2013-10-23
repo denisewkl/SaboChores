@@ -25,7 +25,7 @@ public class Servlet_SaboCheck  extends HttpServlet{
 		HttpSession session = request.getSession(true);
 		
 		Child currentChild = (Child)session.getAttribute("username");
-		FamilyManager familyMgr = FamilyManager.getInstance();
+		//FamilyManager familyMgr = FamilyManager.getInstance();
 		ChoreManager choreMgr = ChoreManager.getInstance();
 		
 		//getting the values from the selected option from child-dashboard, sabo option.
@@ -38,6 +38,9 @@ public class Servlet_SaboCheck  extends HttpServlet{
 		
 		//getting the chore using the specific ID.
 		Chore saboedChore = choreMgr.getChore(saboedTaskID);
+		
+		//setting the saboed chore status to saboed
+		choreMgr.setChoreStatus(saboedChore, "Saboed");
 		
 		//setting the chore to the saboed name;
 		saboedChore.setChoreTakenBy(saboedName);

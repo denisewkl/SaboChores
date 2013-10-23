@@ -58,7 +58,7 @@ public class Servlet_MemberManagement  extends HttpServlet{
 			}
 			
 			//System.out.println("All children left: " + allChildren.size());
-			response.sendRedirect("admin-dashboard.jsp");	
+			response.sendRedirect("admin-member.jsp");	
 			
 		} else { //if add child to empire 
 			
@@ -91,7 +91,7 @@ public class Servlet_MemberManagement  extends HttpServlet{
 				response.sendRedirect("error.jsp");
 			} else {
 				//String username, String password, String title, String empire, int points, int saboTix, int moneyTix,int reward) {
-				Child newChild = new Child(childUsername,childPassword,"Level 1",empire,0,0,0,0);
+				Child newChild = new Child(childUsername,childPassword,"Level 1",empire,100,0,0,0);
 				familyMgr.addChild(newChild);
 				response.sendRedirect("admin-dashboard.jsp");
 			}
