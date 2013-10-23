@@ -9,7 +9,7 @@ import manager.*;
 import java.util.*;
 
 
-public class Servlet_ChoreCheck  extends HttpServlet{
+public class Servlet_ChildChoreCheck  extends HttpServlet{
 
         //overwrites the doGet method
         public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -46,18 +46,9 @@ public class Servlet_ChoreCheck  extends HttpServlet{
                         currentChore.setChoreTakenBy(currentChild.getUserName());
                         //System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
                 } else if (choreStatus.equalsIgnoreCase("In-Progress")) {
-                        currentChore.setStatus("Completed");
+                        currentChore.setStatus("Pending");
                         //System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
-                } else if (choreStatus.equalsIgnoreCase("Complete")) {
-                        //update the points.
-                        currentChild.setPoints(currentChild.getPoints() + currentChore.getChorePoints());
-                        
-                        //remove the current chore for the current user.
-                        choreMgr.removeChore(currentChore.getChoreID(), currentChild.getUserName());
-                        
-                        response.sendRedirect("child-dashboard");
-                        
-                }else if (choreStatus.equalsIgnoreCase("Saboed")) {
+                } else if (choreStatus.equalsIgnoreCase("Saboed")) {
                         currentChore.setStatus("In-Progress");
                         //System.out.println("AFTER Chore button clicked: " + currentChore.getChoreStatus());
                 }

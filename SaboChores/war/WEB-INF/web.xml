@@ -48,11 +48,11 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>Servlet_ChoreCheck</servlet-name>
-		<servlet-class>controller.Servlet_ChoreCheck</servlet-class>
+		<servlet-name>Servlet_ChildChoreCheck</servlet-name>
+		<servlet-class>controller.Servlet_ChildChoreCheck</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Servlet_ChoreCheck</servlet-name>
+		<servlet-name>Servlet_ChildChoreCheck</servlet-name>
 		<url-pattern>/chorecheck</url-pattern>
 	</servlet-mapping>
 	

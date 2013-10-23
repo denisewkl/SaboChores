@@ -29,11 +29,11 @@ function showform(a)
 	 	%>
 	 	
 	 	
-	 	<!-- Completed chores -->
+	 	<!-- Pending chores -->
 	  	<form action = "/adminChoreCheck" method = "post">
 	  		
 	  		<!-- To check whether is it completed chores or uncompleted chores -->
-	  		<input type = "hidden" name = "choreCheckType" value = "completedChores" />
+	  		<input type = "hidden" name = "choreCheckType" value = "pendingChores" />
 	  		
 	  		
 		 	<table width="100%">
@@ -43,7 +43,7 @@ function showform(a)
 				%>
 			 		<tr>
 					 	<td><input type="checkbox" name="chore" value='<%=c.getChoreID() %>'><%=c.getTaskDescription() %></td>
-					 	<td><input type="button" name="status" value='<%=c.getChoreStatus() %>'></td>
+					 	<td><input type="submit" name="status" value="To approve?"></td>
 					 	<td><%=c.getChorePoints() %> points</td>
 				 	</tr>
 		 		<%}%>
@@ -65,7 +65,7 @@ function showform(a)
 		<form action = "/adminChoreCheck" method = "post">
 		
 			<!-- To check whether is it completed chores or uncompleted chores -->
-	  		<input type = "hidden" name = "choreCheckType" value = "unCompletedChores" />
+	  		<input type = "hidden" name = "choreCheckType" value = "notPendingChores" />
 	  		
 		 	<table width="100%">
 		 		<thead><h5>Chores Status</h5></thead>

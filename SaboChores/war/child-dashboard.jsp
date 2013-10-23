@@ -50,10 +50,10 @@
 			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } else {%>
-			 		<form method = "post" action = "/chorecheck"> 
-			 		<td><input type="submit" value="Complete" id="submit" /></td>
+			 		<form method = "post" action = ""> 
+			 		<td><input type="submit" value="Pending" id="submit" /></td>
 			 		<td><%= c.getChorePoints() %> </td>
-			 		<input type = "hidden" name = "choreStatus" value = "Complete" />
+			 		<input type = "hidden" name = "choreStatus" value = "" />
 			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } %>

@@ -12,10 +12,10 @@ public class ChoreManager implements java.io.Serializable {
 	public ChoreManager() {
 		//create new items in the list.
 		//Chore status
-		//Available
-		//In-Progress
-		//Completed (Means pending on parents to approve and award the points over to the child)
-		//Saboed (Someone sabo the mentioned Child)
+			//Available
+			//In-Progress
+			//Waiting (Means pending on parents to approve and award the points over to the child)
+			//Saboed (Someone sabo the mentioned Child)
 		
 		Chore chore1 = new Chore(allChores.size()+1, "Sweep the floor", "In-Progress", 4, "agurz","", "Empire 2");
 		allChores.add(chore1);
@@ -26,7 +26,7 @@ public class ChoreManager implements java.io.Serializable {
 		Chore chore3 = new Chore(allChores.size()+1, "Buy toilet paper", "Available", 2, "","", "Empire 2");
 		allChores.add(chore3);
 		
-		Chore chore4 = new Chore(allChores.size()+1, "Bathe the dog", "Completed", 3, "agurz","", "Empire 2");
+		Chore chore4 = new Chore(allChores.size()+1, "Bathe the dog", "Pending", 3, "agurz","", "Empire 2");
 		allChores.add(chore4);
 		
 		Chore chore5 = new Chore(allChores.size()+1, "Bathe the cat", "In-Progress", 3, "denise","", "Empire 1");
@@ -163,24 +163,24 @@ public class ChoreManager implements java.io.Serializable {
 		return choresForThisEmpire;
 	}
 	
-	//getting completed chores under the specific empire
+	//getting pending chores under the specific empire
 	public List<Chore> getAllCompletedChoresUnderThisEmpire (String empire) {
 		List<Chore> allCompletedChoresUnderThisEmpire = new ArrayList<Chore>();
 		
 		for (Chore c: this.getAllChoresForThisEmpire(empire)) {
-			if (c.getChoreStatus().equalsIgnoreCase("Completed")) {
+			if (c.getChoreStatus().equalsIgnoreCase("Pending")) {
 				allCompletedChoresUnderThisEmpire.add(c);
 			}
 		}
 		return allCompletedChoresUnderThisEmpire;
 	}
 	
-	//getting !completed chores under the specific empire
+	//getting !pending chores under the specific empire
 	public List<Chore> getAllNotCompletedChoresUnderThisEmpire (String empire) {
 		List<Chore> allNotCompletedChoresUnderThisEmpire = new ArrayList<Chore>();
 		
 		for (Chore c: this.getAllChoresForThisEmpire(empire)) {
-			if (!c.getChoreStatus().equalsIgnoreCase("Completed")) {
+			if (!c.getChoreStatus().equalsIgnoreCase("Pending")) {
 				allNotCompletedChoresUnderThisEmpire.add(c);
 			}
 		}
