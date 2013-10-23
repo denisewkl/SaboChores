@@ -8,6 +8,16 @@
 		<url-pattern>/sabochores</url-pattern>
 	</servlet-mapping>
 	
+	
+	<servlet>
+		<servlet-name>Servlet_AdminChoreCheck</servlet-name>
+		<servlet-class>controller.Servlet_AdminChoreCheck</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet_AdminChoreCheck</servlet-name>
+		<url-pattern>/adminChoreCheck</url-pattern>
+	</servlet-mapping>
+	
 
 	<servlet>
 		<servlet-name>Servlet_RewardCheck</servlet-name>

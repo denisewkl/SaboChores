@@ -30,77 +30,73 @@ function showform(a)
 	 	
 	 	
 	 	<!-- Completed chores -->
+	  	<form onsubmit="" action = "/adminChoreCheck" method = "post">
+	  		
+	  		<!-- To check whether is it completed chores or uncompleted chores -->
+	  		<input type = "hidden" name = "choreCheckType" value = "completedChores" />
+	  		
+	  		
+		 	<table width="100%">
+		 		<thead><h5>Chores to approve</h5></thead>
+			 	<%
+			 	for(Chore c: completedChores){
+				%>
+			 		<tr>
+					 	<td><input type="checkbox" name="chore" value='<%=c.getChoreID() %>'><%=c.getTaskDescription() %></td>
+					 	<td><input type="button" name="status" value='<%=c.getChoreStatus() %>'></td>
+					 	<td><%=c.getChorePoints() %> points</td>
+				 	</tr>
+		 		<%}%>
+		 	</table>
+	  		  	
+	  	</form>
+	  	<p></p>
 	  	
 	  	<!-- End of completed chores -->
 	  	
 	  	
 	  	
 	  	
+	  	
+	  	
+
+	  	
 	 	<!-- Uncompleted Chores -->
-		<form onsubmit="">
-		 	<table width="100%">
-		 	<thead><h5>Chores</h5></thead>
-		 	<%
-		 	for(Chore c: uncompletedChores){
-			%>
-	
-		 		<tr>
-			 	<td><input type="checkbox" name="chore" value='<%=c.getChoreID() %>'><%=c.getTaskDescription() %></td>
-			 	<td><input type="button" name="status" value='<%=c.getChoreStatus() %>'></td>
-			 	<td><%=c.getChorePoints() %> points</td>
-			 	</tr>
-
-		 	<% 	
-		 	}
-		 	%>
-		 	
-		 	</table>
-	 	<p>
-	 	<table width="100%">
-	 	<tr>
-	 	<td><input type="button" value="Delete Chore" onclick="showform(1)" /></td>
-	 	<td><input type="submit" value="Add Chore" onclick="window.location.href='add-chore.jsp'; return false;" /></td>
-	 	</tr>
-	  	</table>
-	  	
-	  	<div id="overlay_form" style="display:none">
-	  	<h6>Delete Chore</h6>
-		<label>Are you sure you want to delete chore(s)?</label></br></br>
-		<input type="button" value="No" name="choice" onclick="showform(2)"/>
-		<input type="submit" value="Yes" name="choice" id="submit"/>
-	  	</div>
-	  		  	
-	  	</form>
-	  	<!-- End of uncompleted chores -->
-	  	
-
-	  	</p>
-	  <%
-	  //do this part
-	  String choice=request.getParameter("choice");
-	  String chore[]= request.getParameterValues("chore");
-	  
-	  String a="";
-	  
-	  if(chore != null && choice.equals("Yes"))
-	  {
-	  for(int i=0; i<chore.length; i++){
-		  a=chore[i];
-		  
-		  int aInt = Integer.parseInt(a);
-		  Chore getChore=choreMgr.getChore(aInt);
-			
-			if(getChore.getChoreID() == aInt){
-
-				choreMgr.getAllChores().remove(choreMgr.getChore(aInt));
-
-			}
+		<form onsubmit="" method = "/adminChoreCheck" method = "post">
 		
-	  }
-	  response.sendRedirect("admin-dashboard.jsp");
-	  }
-	 
-	  %>
+			<!-- To check whether is it completed chores or uncompleted chores -->
+	  		<input type = "hidden" name = "choreCheckType" value = "unCompletedChores" />
+	  		
+		 	<table width="100%">
+		 		<thead><h5>Chores Status</h5></thead>
+			 	<%
+			 	for(Chore c: uncompletedChores){
+				%>
+		 		<tr>
+			 		<td><input type="checkbox" name="chore" value='<%=c.getChoreID() %>'><%=c.getTaskDescription() %></td>
+				 	<td><input type="button" name="status" value='<%=c.getChoreStatus() %>'></td>
+				 	<td><%=c.getChorePoints() %> points</td>
+			 	</tr>
+			 	<%}%>
+		 	</table>
+		 	
+		 	<p></p>
+		 	<table width="100%">
+			 	<tr>
+				 	<td><input type="button" value="Delete Chore" onclick="showform(1)" /></td>
+				 	<td><input type="submit" value="Add Chore" onclick="window.location.href='add-chore.jsp'; return false;" /></td>
+			 	</tr>
+		  	</table>
+		  	
+		  	<div id="overlay_form" style="display:none">
+		  	<h6>Delete Chore</h6>
+			<label>Are you sure you want to delete chore(s)?</label></br></br>
+			<input type="button" value="No" name="choice" onclick="showform(2)"/>
+			<input type="submit" value="Yes" name="choice" id="submit"/>
+		  	</div>
+		  		  	
+		</form>
+	  	<!-- End of uncompleted chores -->
 
 	  </div>
 	</div>
