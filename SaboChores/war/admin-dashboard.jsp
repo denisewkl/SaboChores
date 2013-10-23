@@ -15,24 +15,7 @@ function showform(a)
 
  
 </script>
-<!--  
-<script type="text/javascript">
- 
-function showStatsform(a)
-{
-	if(a==1)
-    	document.getElementById("status_form").style.display="block";
-      
-	else
-		document.getElementById("status_form").style.display="none";
-}
- 
-//maintain the popup at center of the page when browser resized
 
- 
-</script>
-
--->	
 	<!-- MAIN -->
 	<div role="main" id="main">
 		<div class="wrapper">
@@ -40,39 +23,38 @@ function showStatsform(a)
 	 	<h2 class="heading" align="center">Dashboard</h2>
 	 	
 	 	<%
-	 	List<Chore> al = new ArrayList<Chore>();
-	 	if(choreMgr.getAllChores()!=null){
-	 	for(Chore c: choreMgr.getAllChores()){
-	 		if(c.getEmpire().equals(currentParent.getEmpire())){
-	 			al.add(c);
-	 		}
-	 		
-	 	}
-	 	}
-
-	 	
+	 	//getting the list of chores that belongs to this currentParent empire.
+	 	List<Chore> uncompletedChores = choreMgr.getAllNotCompletedChoresUnderThisEmpire(currentParent.getEmpire());
+	 	List<Chore> completedChores = choreMgr.getAllCompletedChoresUnderThisEmpire(currentParent.getEmpire());
 	 	%>
-<form onsubmit="">
-	 	<table width="100%">
-	 	<thead><h5>Chores</h5></thead>
-	 	<%
-	 	for(Chore c: al){
-		%>
+	 	
+	 	
+	 	<!-- Completed chores -->
+	  	
+	  	<!-- End of completed chores -->
+	  	
+	  	
+	  	
+	  	
+	 	<!-- Uncompleted Chores -->
+		<form onsubmit="">
+		 	<table width="100%">
+		 	<thead><h5>Chores</h5></thead>
+		 	<%
+		 	for(Chore c: uncompletedChores){
+			%>
+	
+		 		<tr>
+			 	<td><input type="checkbox" name="chore" value='<%=c.getChoreID() %>'><%=c.getTaskDescription() %></td>
+			 	<td><input type="button" name="status" value='<%=c.getChoreStatus() %>'></td>
+			 	<td><%=c.getChorePoints() %> points</td>
+			 	</tr>
 
-	 		<tr>
-		 	<td><input type="checkbox" name="chore" value='<%=c.getChoreID() %>'><%=c.getTaskDescription() %></td>
-		 	<td><input type="button" name="status" value='<%=c.getChoreStatus() %>'></td>
-		 	<td><%=c.getChorePoints() %> points</td>
-		 	</tr>
-
+		 	<% 	
+		 	}
+		 	%>
 		 	
-	 	<% 	
-	 	}
-	 	
-
-	 	%>
-	 	
-	 	</table>
+		 	</table>
 	 	<p>
 	 	<table width="100%">
 	 	<tr>
@@ -89,6 +71,8 @@ function showStatsform(a)
 	  	</div>
 	  		  	
 	  	</form>
+	  	<!-- End of uncompleted chores -->
+	  	
 
 	  	</p>
 	  <%

@@ -26,7 +26,7 @@ public class ChoreManager implements java.io.Serializable {
 		Chore chore3 = new Chore(allChores.size()+1, "Buy toilet paper", "Available", 2, "","", "Empire 2");
 		allChores.add(chore3);
 		
-		Chore chore4 = new Chore(allChores.size()+1, "Bathe the dog", "Complete", 3, "agurz","", "Empire 2");
+		Chore chore4 = new Chore(allChores.size()+1, "Bathe the dog", "Completed", 3, "agurz","", "Empire 2");
 		allChores.add(chore4);
 		
 		Chore chore5 = new Chore(allChores.size()+1, "Bathe the cat", "In-Progress", 3, "denise","", "Empire 1");
@@ -151,6 +151,40 @@ public class ChoreManager implements java.io.Serializable {
 	}
 	
 	//getting chores that belongs to the specific empire
+	public List<Chore> getAllChoresForThisEmpire(String empire) {
+		List<Chore> choresForThisEmpire = new ArrayList<Chore>();
+		
+		for (Chore c: allChores) {
+			if (c.getEmpire().equalsIgnoreCase(empire)) {
+				choresForThisEmpire.add(c);
+			}
+		}
+		
+		return choresForThisEmpire;
+	}
 	
+	//getting completed chores under the specific empire
+	public List<Chore> getAllCompletedChoresUnderThisEmpire (String empire) {
+		List<Chore> allCompletedChoresUnderThisEmpire = new ArrayList<Chore>();
+		
+		for (Chore c: this.getAllChoresForThisEmpire(empire)) {
+			if (c.getChoreStatus().equalsIgnoreCase("Completed")) {
+				allCompletedChoresUnderThisEmpire.add(c);
+			}
+		}
+		return allCompletedChoresUnderThisEmpire;
+	}
+	
+	//getting !completed chores under the specific empire
+	public List<Chore> getAllNotCompletedChoresUnderThisEmpire (String empire) {
+		List<Chore> allNotCompletedChoresUnderThisEmpire = new ArrayList<Chore>();
+		
+		for (Chore c: this.getAllChoresForThisEmpire(empire)) {
+			if (!c.getChoreStatus().equalsIgnoreCase("Completed")) {
+				allNotCompletedChoresUnderThisEmpire.add(c);
+			}
+		}
+		return allNotCompletedChoresUnderThisEmpire;
+	}
 	
 }
