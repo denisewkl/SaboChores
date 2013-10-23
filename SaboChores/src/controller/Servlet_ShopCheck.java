@@ -37,11 +37,12 @@ public class Servlet_ShopCheck  extends HttpServlet{
 				currentChild.setPoints(currentChild.getPoints() - numOfSaboTix * 20);
 				currentChild.setSaboTix(currentChild.getSaboTix() + numOfSaboTix);
 				
-				
 				response.sendRedirect("child-dashboard.jsp");
 			} else {
 				//goes to the error page becos not enough of points to exchange.
-				response.sendRedirect("shopErrorMsg.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("child-shop.jsp");
+	            request.setAttribute("msg","Insufficient Points!");
+	            rd.forward(request, response);
 			}
 			
 		} else { //if tix selected is money
@@ -55,7 +56,9 @@ public class Servlet_ShopCheck  extends HttpServlet{
 				response.sendRedirect("child-dashboard.jsp");
 			} else {
 				//goes to the error page becos not enuff points to exchange for tix
-				response.sendRedirect("shopErrorMsg.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("child-shop.jsp");
+	            request.setAttribute("msg","Insufficient Points!");
+	            rd.forward(request, response);;
 			}
 			
 		}
