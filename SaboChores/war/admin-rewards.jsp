@@ -23,7 +23,7 @@ function showform(a)
 		<div class="wrapper">
 			
 	 	<h2 class="heading" align="center">Child Rewards</h2>
-<form onsubmit="">
+<form onsubmit="" action = "/rewardCheck">
 	 	<table width="100%">
 	 	
 	 	<tr>
@@ -62,24 +62,6 @@ function showform(a)
 		
 		</form>
 	  	</p>
- <%
-	  String choice=request.getParameter("choice");
-	  String user[]= request.getParameterValues("user");
-	  System.out.println("test2");
-	  if(user != null && choice.equals("Yes"))
-	  {
-	  for(int i=0; i<user.length; i++){;
-		  Child getChild=familyMgr.getChildrenByName(user[i]);
-		  
-		if(user[i].equals(getChild.getUserName())){
-			familyMgr.getChildrenByName(user[i]).setReward(0);
-			System.out.println("test1");
-		}
-	  }
-	  response.sendRedirect("admin-rewards.jsp");
-	  }
-	 
-	  %>
 
 	  </div>
 	</div>

@@ -10,6 +10,16 @@
 	
 
 	<servlet>
+		<servlet-name>Servlet_RewardCheck</servlet-name>
+		<servlet-class>controller.Servlet_RewardCheck</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet_RewardCheck</servlet-name>
+		<url-pattern>/rewardCheck</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
 		<servlet-name>Servlet_MemberManagement</servlet-name>
 		<servlet-class>controller.Servlet_MemberManagement</servlet-class>
 	</servlet>
