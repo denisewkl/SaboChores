@@ -65,14 +65,49 @@
 	 	<p>
 	 	<table width="100%">
 	 	<tr>
-	 	<td><input type="submit" value="Sabo Someone" id="pop2" /></td>
-	 	<td><input type="submit" value="Exchange for $$" id="pop" />
-	 	
+	 	<td>
+	 		<%
+			//if no family or chores to select from to sabo
+			if (allChildrenInSameEmpire.size() != 0 && getChoreToSabo.size() != 0) { %>
+				<input type="submit" value="Sabo Someone" id="pop2" />
+				<%String error=(String)request.getAttribute("msg");
+					if (error != null) {
+						out.println(error);
+					}
+				%>
+			<%}%>
+		</td>
+	 	<td>
+	 		<%
+			//if no family or chores to select from to sabo
+			if (currentChild.getMoneyTix() >= 1) { %>
+	 		<input type="submit" value="Exchange for $$" id="pop" />
+	 		
+	 		<%String error=(String)request.getAttribute("msg");
+				if (error != null) {
+					out.println(error);
+				}
+			%>
+				
+	 		<%}%>
 	 	</td>
 	 	</tr>
 	 	<tr>
-	 	<td>Requires x1 Sabo Tix</td>
-	 	<td>Requires x1 $$ Tix</td>
+	 	<td>
+	 		<%
+			//if no family or chores to select from to sabo
+			if (allChildrenInSameEmpire.size() != 0 && getChoreToSabo.size() != 0) { %>
+				Requires x1 Sabo Tix
+				
+			<%} %>
+		</td>
+	 	<td>
+	 		<%
+			//if no family or chores to select from to sabo
+			if (currentChild.getMoneyTix() >= 1) { %>
+				Requires x1 $$ Tix
+			<%} %>	
+		</td>
 	 	</tr>
 	  	</table>
 	  	</p>
@@ -87,33 +122,32 @@
 		<a href="#" id="close" >Close</a>
 	</form>
 	<!-- pop form for sabo someone --> 
-	<form id="overlay_form2" style="display:none" action = "/sabocheck">
-		<h6>Sabo family members</h6>
-		<label>Who?</label><br>
-		<select name = "saboedName"> 
-			<%
-				for (Child c: allChildrenInSameEmpire) { 
-					if (c.getEmpire().equalsIgnoreCase(currentChild.getEmpire())) {%>
-					 
-					<option value ="<%=c.getUserName()%>"><%=c.getUserName()%></option>
-			<%		}
-				}%>
-		</select>
-		<br />
-		Chore to sabo: <br />
-		<select name = "saboedTask"> 
-			<%
-				for (Chore c: getChoreToSabo) { %> 
-					<option value ="<%=c.getChoreID()%>"><%=c.getTaskDescription()%></option>
-			<%	}%>
-		</select>
-		<br />
-		<input type="Submit" value="Sabo" />
-		<a href="#" id="close2" >Close</a>
-	</form>
-
-
-
+	
+		<form id="overlay_form2" style="display:none" action = "/sabocheck">
+			<h6>Sabo family members</h6>
+			<label>Who?</label><br>
+			<select name = "saboedName"> 
+				<%
+					for (Child c: allChildrenInSameEmpire) { 
+						if (c.getEmpire().equalsIgnoreCase(currentChild.getEmpire())) {%>
+						 
+						<option value ="<%=c.getUserName()%>"><%=c.getUserName()%></option>
+				<%		}
+					}%>
+			</select>
+			<br />
+			Chore to sabo: <br />
+			<select name = "saboedTask"> 
+				<%
+					for (Chore c: getChoreToSabo) { %> 
+						<option value ="<%=c.getChoreID()%>"><%=c.getTaskDescription()%></option>
+				<%	}%>
+			</select>
+			<br />
+			<input type="Submit" value="Sabo" />
+			<a href="#" id="close2" >Close</a>
+		</form>
+		
 	  </div>
 	</div>
 	<!-- ENDS MAIN -->

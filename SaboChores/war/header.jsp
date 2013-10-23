@@ -118,24 +118,24 @@ $(window).bind('resize',positionPopup);
 			<div id="logo">
 				<table border="1" width="100%" font size="8px";>
 				<tr>
-				<td>Welcome, <%=currentChild.getUserName()%>&nbsp</td>
-				<td>EXP: </td>
+					<td>Welcome, <%=currentChild.getUserName()%>&nbsp</td>
+					<td></td>
 				</tr>
 				<tr>
-				<td>Title: <%=currentChild.getTitle()%>&nbsp</td>
-				<td>Points: <%=currentChild.getPoints()%></td>
+					<td>Title: <%=currentChild.getTitle()%>&nbsp</td>
+					<td>Points: <%=currentChild.getPoints()%></td>
 				</tr>
 				<tr>
-				<td>Household: <%=currentChild.getEmpire()%>&nbsp</td>
-				<td>Sabo Tix: <%=currentChild.getSaboTix()%></td>
+					<td>Household: <%=currentChild.getEmpire()%>&nbsp</td>
+					<td>Sabo Tix: <%=currentChild.getSaboTix()%></td>
 				</tr>
 				<tr>
-				<td></td>
-				<td>$ Tix: <%=currentChild.getMoneyTix()%></td>
+					<td></td>
+					<td>$ Tix: <%=currentChild.getMoneyTix()%></td>
 				</tr>
 				</table>
 				<p>
-				<a href="logoutChild.jsp">Logout</a>
+					<a href="logoutChild.jsp">Logout</a>
 				</p>
 				
 				

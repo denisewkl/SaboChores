@@ -105,7 +105,7 @@ public class ChoreManager implements java.io.Serializable {
 			for (Chore c: this.getAllChores()) {
 				
 				if (c.getEmpire().equalsIgnoreCase(currentChild.getEmpire()) &&
-						(c.getChoreStatus().equalsIgnoreCase("Available") || (c.getChoreStatus().equalsIgnoreCase("Saboed") && !c.getSaboBy().equalsIgnoreCase(username)))
+						(c.getChoreStatus().equalsIgnoreCase("Available") || (c.getChoreStatus().equalsIgnoreCase("Saboed") && !c.getSaboBy().equalsIgnoreCase(username) && c.getChoreTakenBy().equalsIgnoreCase(username)))
 						) {
 					choresToSabo.add(c);
 				}

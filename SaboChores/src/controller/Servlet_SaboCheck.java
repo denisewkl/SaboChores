@@ -39,19 +39,28 @@ public class Servlet_SaboCheck  extends HttpServlet{
 		//getting the chore using the specific ID.
 		Chore saboedChore = choreMgr.getChore(saboedTaskID);
 		
-		//setting the saboed chore status to saboed
-		choreMgr.setChoreStatus(saboedChore, "Saboed");
+		//check whether child has enuff sabo tix.
+		if (currentChild.getSaboTix()>= 1) {
+			//setting the saboed chore status to saboed
+			choreMgr.setChoreStatus(saboedChore, "Saboed");
+			
+			//setting the chore to the saboed name;
+			saboedChore.setChoreTakenBy(saboedName);
+			
+			//setting the chore saboby name
+			saboedChore.setSaboBy(currentChild.getUserName());
+			
+			//deduct the sabo tix from the current user.
+			currentChild.setSaboTix(currentChild.getSaboTix() - 1);
+			
+			response.sendRedirect("child-dashboard.jsp");
+		} else {
+			RequestDispatcher rd = request.getRequestDispatcher("child-dashboard.jsp");
+            request.setAttribute("msg","You do not have enough sabo tix!");
+            rd.forward(request, response);
+		}
 		
-		//setting the chore to the saboed name;
-		saboedChore.setChoreTakenBy(saboedName);
 		
-		//setting the chore saboby name
-		saboedChore.setSaboBy(currentChild.getUserName());
-		
-		//deduct the sabo tix from the current user.
-		currentChild.setSaboTix(currentChild.getSaboTix() - 1);
-		
-		response.sendRedirect("child-dashboard.jsp");
 		
 			
 	}

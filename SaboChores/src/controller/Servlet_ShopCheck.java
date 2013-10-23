@@ -53,12 +53,12 @@ public class Servlet_ShopCheck  extends HttpServlet{
 				//update the currentChild points and number of money tix.
 				currentChild.setPoints(currentChild.getPoints() - numOfMoneyTix * 20);
 				currentChild.setMoneyTix(currentChild.getMoneyTix() + numOfMoneyTix);
-				response.sendRedirect("child-dashboard.jsp");
+				response.sendRedirect("child-shop.jsp");
 			} else {
 				//goes to the error page becos not enuff points to exchange for tix
 				RequestDispatcher rd = request.getRequestDispatcher("child-shop.jsp");
 	            request.setAttribute("msg","Insufficient Points!");
-	            rd.forward(request, response);;
+	            rd.forward(request, response);
 			}
 			
 		}
