@@ -36,7 +36,7 @@
 <form id="overlay_form" style="display:none" action = "/shopcheck">
 <h6>Sabo Tickets</h6>
 <label>How many tickets?</label><br>
-<input type="number" name="sabopoints" id="points" min="0" max="20" step="1" value="0"><br />
+<input type="number" name="sabopoints" id="points" min="1" max="20" step="1" value="1"><br />
 <input type = "hidden" name = "type" value = "sabo" />
 
 <input type="Submit" value="Buy" />
@@ -47,12 +47,20 @@
 <form id="overlay_form2" style="display:none" action = "/shopcheck">
 <h6>$$ Tickets</h6>
 <label>How many tickets?</label><br>
-<input type="number" name="moneypoints" id="points" min="0" max="20" step="1" value="0"><br />
+<input type="number" name="moneypoints" id="points" min="1" max="20" step="1" value="1"><br />
 <input type = "hidden" name = "type" value = "money" />
 <input type="Submit" value="Buy" />
 <a href="#" id="close2" >Close</a>
 </form>
+<%
+String error=(String)request.getAttribute("msg");
 
+if(error!=null){
+	%>
+	<font color="red"><%=error %></font>
+	<%
+}
+%>
 </p>
 	  
 	  </div>

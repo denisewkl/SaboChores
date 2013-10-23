@@ -96,6 +96,10 @@ $(window).bind('resize',positionPopup);
 	<!-- ENDS HEADER -->
 	
 	<!-- MAIN -->
+	<%
+	String error=(String)request.getAttribute("msg");
+	%>
+	
 	<div role="main" id="main">
 		<div class="wrapper">
 			
@@ -113,10 +117,15 @@ $(window).bind('resize',positionPopup);
 							<label for="password" >Password</label>
 							<input name="password"  id="password" type="password" class="form-poshytip" title="Enter your password" />
 						</p>
-						
-						
-						
-						<p><input type="submit" value="Login" id="submit" /> </p>
+									
+						<p>
+							<input type="submit" value="Login" id="submit" />
+							<%
+								if (error != null) {
+									out.println(error);
+								}
+							%> 
+						</p>
 					</fieldset>
 					
 				</form>

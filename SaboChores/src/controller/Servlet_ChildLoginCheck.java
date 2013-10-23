@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,7 +54,9 @@ public class Servlet_ChildLoginCheck extends HttpServlet{
 	        
 			//checking whether does the current child exist
 	        if (currentChild == null) {
-	        	response.sendRedirect("Error.jsp");
+	        	RequestDispatcher rd = request.getRequestDispatcher("child-login.jsp");
+	            request.setAttribute("msg","No such child!");
+	            rd.forward(request, response);
 	        } else {
 	        		        	
 	        	if (currentChild.getUserName().equalsIgnoreCase(username) && currentChild.getPassword().equalsIgnoreCase(password)){
@@ -62,7 +65,9 @@ public class Servlet_ChildLoginCheck extends HttpServlet{
 	            	//System.out.println("Child page");
 	        	} else {
 	        		//System.out.println("Child, wrong credentials.");
-	        		response.sendRedirect("Error.jsp");
+	        		RequestDispatcher rd = request.getRequestDispatcher("child-login.jsp");
+		            request.setAttribute("msg","Username or Password is incorrect!");
+		            rd.forward(request, response);
 	        	}
 	        
 	        }	

@@ -61,6 +61,11 @@
 	<!-- ENDS HEADER -->
 	
 	<!-- MAIN -->
+	
+	<%
+	String error=(String)request.getAttribute("msg");
+	%>
+	 	
 	<div role="main" id="main">
 		<div class="wrapper">
 			
@@ -81,7 +86,15 @@
 						
 						
 						
-						<p><input type="submit" value="Login" id="submit" /> </p>
+						<p>
+							<input type="submit" value="Login" id="submit" />
+							<%
+								if (error !=null) {
+									out.println(error);
+								}
+							 %>
+						
+						</p>
 					</fieldset>
 					
 				</form>
