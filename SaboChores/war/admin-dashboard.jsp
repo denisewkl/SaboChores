@@ -61,14 +61,18 @@ function showform(a)
 	  		<input type = "hidden" name = "choreCheckType" value = "notPendingChores" />
 	  		
 		 	<table width="100%">
-		 		<thead><h5>Chores Status</h5></thead>
+		 		<tr>
+		 		<td>Chores </td>
+		 		<td align="center">Status</td>
+		 		<td align="center">Points</td>
+		 		</tr>
 			 	<%
 			 	for(Chore c: uncompletedChores){
 				%>
-		 		<tr>
+		 		<tr >
 			 		<td><input type="checkbox" name="chore" value='<%=c.getChoreID() %>'><%=c.getTaskDescription() %></td>
-				 	<td><input type="button" name="status" value='<%=c.getChoreStatus() %>'></td>
-				 	<td><%=c.getChorePoints() %> points</td>
+				 	<td align="center"><%=c.getChoreStatus() %></td>
+				 	<td align="center"><%=c.getChorePoints() %></td>
 			 	</tr>
 			 	<%}%>
 		 	</table>
@@ -80,6 +84,16 @@ function showform(a)
 				 	<td><input type="submit" value="Add Chore" onclick="window.location.href='add-chore.jsp'; return false;" /></td>
 			 	</tr>
 		  	</table>
+		  	<br>
+		  	PS: Cannot delete chores that are In-progress or Saboed.
+		  	<br>
+		  	<%
+		  	String msg= (String)request.getAttribute("msg");
+		  	if(msg!=null){
+		  		
+		  		out.println(msg);
+		  	}
+		  	%>
 		  	
 		  	<div id="overlay_form" style="display:none">
 		  	<h6>Delete Chore</h6>

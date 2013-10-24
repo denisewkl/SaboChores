@@ -16,14 +16,23 @@
 		</div>
 		<div class="FAQ" onclick="toggle('faq2')">
 		 <h6>How do I add my children to my household?</h6>
-		 <div id="faq2" class="ANS"><h7>Go to Member Mangement and Click Add.</h7></div>
+		 <div id="faq2" class="ANS"><h7>Go to Member Mangement and "Click here to add new Child"".</h7></div>
 		</div>
 		
 	 	<div class="FAQ" onclick="toggle('faq3')">
 		<h6>How do I add new Chores?</h6>
-		 <div id="faq3" class="ANS"><h7>Go to Dashboard and click add Chore..</h7></div>
+		 <div id="faq3" class="ANS"><h7>Go to Dashboard and click ""Add Chores".</h7></div>
 		</div>
-	 	
+	 	<div class="FAQ" onclick="toggle('faq4')">
+		<h6>How do I add delete Chores?</h6>
+		 <div id="faq4" class="ANS"><h7>Go to Dashboard, check the chores you want to delete and click "Delete Chores".</h7></div>
+		</div>
+		
+		<div class="FAQ" onclick="toggle('faq5')">
+		<h6>How do I keep track of my children's rewards?</h6>
+		 <div id="faq5" class="ANS"><h7>Go to "View my Child Rewards".</h7></div>
+		</div>
+		
 	  </div>
 	</div>
 	<!-- ENDS MAIN -->

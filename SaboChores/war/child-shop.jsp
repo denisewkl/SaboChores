@@ -40,7 +40,7 @@
 <input type = "hidden" name = "type" value = "sabo" />
 
 <input type="Submit" value="Buy" />
-<a href="#" id="close" >Close</a>
+<input type="button" value="Close" id="close"/>
 </form>
 
 	 <!-- pop up form for $$ tix -->
@@ -50,7 +50,7 @@
 <input type="number" name="moneypoints" id="points" min="1" max="20" step="1" value="1"><br />
 <input type = "hidden" name = "type" value = "money" />
 <input type="Submit" value="Buy" />
-<a href="#" id="close2" >Close</a>
+<input type="button" value="Close" id="close2"/>
 </form>
 <%
 String error=(String)request.getAttribute("msg");

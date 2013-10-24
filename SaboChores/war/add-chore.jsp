@@ -18,7 +18,7 @@
 	 	</tr>
 	 	<tr>
 	 	<td>Points allocated: </td>
-	 	<td><input type="number" name="points" id="points" min="0" max="20" step="1" value="0"></td>
+	 	<td><input type="number" name="points" id="points" min="1" max="20" step="1" value="0"></td>
 	 	</tr>
 	 	</table>
 	 	<p>

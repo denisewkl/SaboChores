@@ -119,7 +119,7 @@
 		<input type="number" name="moneyTix" id="points" min="0" max="20" step="1" value="0"><br />
 		
 		<input type="Submit" value="Buy" />
-		<a href="#" id="close" >Close</a>
+		<input type="button" value="Close" id="close"/>
 	</form>
 	<!-- pop form for sabo someone --> 
 	
@@ -145,7 +145,7 @@
 			</select>
 			<br />
 			<input type="Submit" value="Sabo" />
-			<a href="#" id="close2" >Close</a>
+			<input type="button" value="Close" id="close2"/>
 		</form>
 		
 	  </div>

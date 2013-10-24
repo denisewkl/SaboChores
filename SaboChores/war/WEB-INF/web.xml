@@ -8,36 +8,7 @@
 		<url-pattern>/sabochores</url-pattern>
 	</servlet-mapping>
 	
-	
-	<servlet>
-		<servlet-name>Servlet_AdminChoreCheck</servlet-name>
-		<servlet-class>controller.Servlet_AdminChoreCheck</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Servlet_AdminChoreCheck</servlet-name>
-		<url-pattern>/adminChoreCheck</url-pattern>
-	</servlet-mapping>
-	
 
-	<servlet>
-		<servlet-name>Servlet_RewardCheck</servlet-name>
-		<servlet-class>controller.Servlet_RewardCheck</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Servlet_RewardCheck</servlet-name>
-		<url-pattern>/rewardCheck</url-pattern>
-	</servlet-mapping>
-	
-	
-	<servlet>
-		<servlet-name>Servlet_MemberManagement</servlet-name>
-		<servlet-class>controller.Servlet_MemberManagement</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Servlet_MemberManagement</servlet-name>
-		<url-pattern>/memberManagementCheck</url-pattern>
-	</servlet-mapping>
-	
 	<servlet>
 		<servlet-name>Servlet_ChildLoginCheck</servlet-name>
 		<servlet-class>controller.Servlet_ChildLoginCheck</servlet-class>
@@ -48,11 +19,11 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>Servlet_ChildChoreCheck</servlet-name>
-		<servlet-class>controller.Servlet_ChildChoreCheck</servlet-class>
+		<servlet-name>Servlet_ChoreCheck</servlet-name>
+		<servlet-class>controller.Servlet_ChoreCheck</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Servlet_ChildChoreCheck</servlet-name>
+		<servlet-name>Servlet_ChoreCheck</servlet-name>
 		<url-pattern>/chorecheck</url-pattern>
 	</servlet-mapping>
 	
@@ -65,6 +36,15 @@
 		<url-pattern>/sabocheck</url-pattern>
 	</servlet-mapping>
 	
+		<servlet>
+		<servlet-name>Servlet_AdminChoreCheck</servlet-name>
+		<servlet-class>controller.Servlet_AdminChoreCheck</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet_AdminChoreCheck</servlet-name>
+		<url-pattern>/adminChoreCheck</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>Servlet_ExchangeForMoneyCheck</servlet-name>
 		<servlet-class>controller.Servlet_ExchangeForMoneyCheck</servlet-class>
@@ -73,6 +53,16 @@
 		<servlet-name>Servlet_ExchangeForMoneyCheck</servlet-name>
 		<url-pattern>/exchangemoneycheck</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>Servlet_RewardCheck</servlet-name>
+		<servlet-class>controller.Servlet_RewardCheck</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Servlet_RewardCheck</servlet-name>
+		<url-pattern>/rewardCheck</url-pattern>
+	</servlet-mapping>
+	
 	
 	<servlet>
 		<servlet-name>Servlet_ParentLoginCheck</servlet-name>

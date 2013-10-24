@@ -12,16 +12,21 @@
 	 	
 	 	<div class="FAQ" onclick="toggle('faq1')">
 		 <h6>What is Sabo Chores?</h6>
-		 <div id="faq1" class="ANS"><h7>Sabo Chores is a game where you sabo your family to do chores.</h7></div>
+		 <div id="faq1" class="ANS"><h7>Sabo Chores is a game where you do chores for rewards!</h7></div>
 		</div>
 		<div class="FAQ" onclick="toggle('faq2')">
-		 <h6>What is Sabo Chores?</h6>
-		 <div id="faq2" class="ANS"><h7>Sabo Chores is a game where you sabo your family to do chores.</h7></div>
+		 <h6>How do I earn points?</h6>
+		 <div id="faq2" class="ANS"><h7>You can earn points by first completing chores!</h7></div>
 		</div>
 		
 	 	<div class="FAQ" onclick="toggle('faq3')">
-		<h6>What is Sabo Chores?</h6>
-		 <div id="faq3" class="ANS"><h7>Sabo Chores is a game where you sabo your family to do chores.</h7></div>
+		<h6>How do I exchange for rewards or sabo someone to do chores??</h6>
+		 <div id="faq3" class="ANS"><h7>All you need to do is to complete chores for points. Next, you have to purchase tickets for rewards or sabotage at the shop!</h7></div>
+		</div>
+		
+		<div class="FAQ" onclick="toggle('faq4')">
+		<h6>Is that all I need to sabo/ get rewards?</h6>
+		 <div id="faq4" class="ANS"><h7> After which, you can use those tickets to sabo and get rewards from the "Dashboard".</h7></div>
 		</div>
 	 	
 	  </div>

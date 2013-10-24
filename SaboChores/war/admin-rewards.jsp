@@ -52,7 +52,14 @@ function showform(a)
 	 	<td><input type="button" value="Confirm" onclick="showform(1)" /></td>
 	 	</tr>
 	  	</table>
-	  	
+	  	<br>
+	  	<%
+	  	String msg=(String)request.getAttribute("msg");
+	  	if(msg!=null){
+	  		out.println(msg);
+	  		
+	  	}
+	  	%>
 	  	<div id="overlay_form" style="display:none">
 		<h6>Reward</h6>
 		<label>Confirm Reward Redemption?</label></br></br>

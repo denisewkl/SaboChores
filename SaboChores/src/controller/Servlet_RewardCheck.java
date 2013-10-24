@@ -27,9 +27,14 @@ public class Servlet_RewardCheck  extends HttpServlet{
 		FamilyManager familyMgr = FamilyManager.getInstance();
 		
 		String choice=request.getParameter("choice");
-		String user[]= request.getParameterValues("user");
-	
-		if(user != null && choice.equals("Yes")) {
+		String[] user= request.getParameterValues("user");
+		
+		if(user==null){
+			RequestDispatcher rd = request.getRequestDispatcher("admin-rewards.jsp");
+            request.setAttribute("msg","Please select at least one.");
+            rd.forward(request, response);
+		}
+		else if(user != null && choice.equals("Yes")) {
 			for(int i=0; i<user.length; i++){;
 				Child getChild=familyMgr.getChildrenByName(user[i]);
 		

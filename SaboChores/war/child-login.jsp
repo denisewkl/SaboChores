@@ -87,7 +87,7 @@
 						
 						
 						<p>
-							<input type="submit" value="Login" id="submit" />
+							<input type="submit" value="Login" id="submit" /><br>
 							<%
 								if (error !=null) {
 									out.println(error);

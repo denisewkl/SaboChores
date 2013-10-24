@@ -744,6 +744,16 @@ height: 120px;
 margin-top:-80px;
 }
 
+#overlay_form3{
+position: absolute;
+border: 5px solid gray;
+padding: 10px;
+background: white;
+width: 200px;
+height: 120px;
+margin-top:-10px;
+}
+
 #overlay_form_password{
 position: absolute;
 border: 5px solid gray;

@@ -31,12 +31,17 @@ public class Servlet_AdminChoreCheck  extends HttpServlet{
 		//getting all the parameters from the user form.
 		String choreCheckType = request.getParameter("choreCheckType");
 		
-		String chore[]= request.getParameterValues("chore");
+		String[] chore= request.getParameterValues("chore");
 		
 		//System.out.println("Chore check type: " + choreCheckType);
 		
 		//if user is going to check not pending chores and delete it...
-		if (choreCheckType.equalsIgnoreCase("notPendingChores")) {
+		if(chore==null){
+			RequestDispatcher rd = request.getRequestDispatcher("admin-dashboard.jsp");
+            request.setAttribute("msg","Cannot delete task there are in progress!");
+            rd.forward(request, response);
+		}
+		else if (choreCheckType.equalsIgnoreCase("notPendingChores")) {
 			//System.out.println("Uncompleted Chores");
 			
 			String a="";
@@ -49,7 +54,7 @@ public class Servlet_AdminChoreCheck  extends HttpServlet{
 					int aInt = Integer.parseInt(a);
 					Chore getChore=choreMgr.getChore(aInt);
 							
-					if(getChore.getChoreID() == aInt){
+					if(getChore.getChoreID() == aInt && (getChore.getChoreStatus().equals("Available")) || getChore.getChoreStatus().equals("Pending")){
 						choreMgr.getAllChores().remove(choreMgr.getChore(aInt));
 					}
 				}
