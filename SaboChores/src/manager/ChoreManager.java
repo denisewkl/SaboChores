@@ -61,7 +61,7 @@ public class ChoreManager implements java.io.Serializable {
 	}
 	
 	public List<Chore> getAllChores() {
-		return allChores;
+		return this.allChores;
 	}
 	
 	public List<Chore> getChoreToSpecificMember(String username) {
@@ -169,6 +169,8 @@ public class ChoreManager implements java.io.Serializable {
 	//getting pending chores under the specific empire
 	public List<Chore> getAllCompletedChoresUnderThisEmpire (String empire) {
 		List<Chore> allCompletedChoresUnderThisEmpire = new ArrayList<Chore>();
+		
+		System.out.println("AGURZ: All chores under this empire: " + this.getAllChoresForThisEmpire(empire).size());
 		
 		for (Chore c: this.getAllChoresForThisEmpire(empire)) {
 			if (c.getChoreStatus().equalsIgnoreCase("Pending")) {

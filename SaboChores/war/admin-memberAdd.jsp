@@ -28,7 +28,7 @@ function showform2(a)
 	<!-- MAIN -->
 	<div role="main" id="main">
 		<div class="wrapper">
-		<form action = "memberManagementCheck" method = "post">
+		<form action = "/memberManagementCheck" method = "post">
 		
 			<table> 
 				<tr>

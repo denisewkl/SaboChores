@@ -34,12 +34,10 @@ public class Servlet_ChildChoreCheck  extends HttpServlet{
                 
                 //getting all chores.
                 ChoreManager choreMgr = ChoreManager.getInstance();
-                List<Chore> allChores = choreMgr.getAllChores();
                 Chore currentChore = choreMgr.getChore(choreID);
                 
                 //System.out.println("Chore: " + currentChore.getTaskDescription());
                 //System.out.println("BEFORE Chore button clicked: " + currentChore.getChoreStatus());
-                                
                 
                 if (choreStatus.equalsIgnoreCase("Available")) {
                         currentChore.setStatus("In-Progress");
