@@ -40,25 +40,32 @@ public class Servlet_MemberManagement  extends HttpServlet{
 		
 		//if delete child from empire
 		if (memberManagement.equalsIgnoreCase("delete")) {
-			
-			//getting the specific user from the form displayed to user. this is only used for delete
-			String user[]= request.getParameterValues("user");
-			String childToDelete = user[0];
-			
-			//System.out.println("Its Delete!");
-			
-			for (int i = 0; i < allChildrenUnderYourEmpire.size(); i++) {
-				Child c = allChildrenUnderYourEmpire.get(i);
+			           
+			try {
+				//getting the specific user from the form displayed to user. this is only used for delete
+				String user[]= request.getParameterValues("user");
+				String childToDelete = user[0];
 				
-				//if child name matches
-				if (c.getUserName().equalsIgnoreCase(childToDelete)) {
-					familyMgr.removeChild(c);
-					//break;
+				//System.out.println("Its Delete!");
+				
+				for (int i = 0; i < allChildrenUnderYourEmpire.size(); i++) {
+					Child c = allChildrenUnderYourEmpire.get(i);
+					
+					//if child name matches
+					if (c.getUserName().equalsIgnoreCase(childToDelete)) {
+						familyMgr.removeChild(c);
+						//break;
+					}
 				}
+				
+				//System.out.println("All children left: " + allChildren.size());
+				response.sendRedirect("admin-member.jsp");	
+			} catch (Exception e) {
+				RequestDispatcher rd = request.getRequestDispatcher("admin-member.jsp");
+	            request.setAttribute("msg","*Please select at least 1 child.");
+	            rd.forward(request, response); 
 			}
 			
-			//System.out.println("All children left: " + allChildren.size());
-			response.sendRedirect("admin-member.jsp");	
 			
 		} else { //if add child to empire 
 			
@@ -86,14 +93,21 @@ public class Servlet_MemberManagement  extends HttpServlet{
 				
 			}
 			
-			//do the logic here of ading new child.
+			//do the logic here of adding new child.
 			if (childExist) {
 				response.sendRedirect("error.jsp");
 			} else {
 				//String username, String password, String title, String empire, int points, int saboTix, int moneyTix,int reward) {
-				Child newChild = new Child(childUsername,childPassword,"Level 1",empire,100,0,0,0);
-				familyMgr.addChild(newChild);
-				response.sendRedirect("admin-dashboard.jsp");
+				
+				if (childUsername.isEmpty() || childUsername == "" || childPassword == ""){
+					RequestDispatcher rd = request.getRequestDispatcher("admin-memberAdd.jsp");
+		            request.setAttribute("msg","*Please key in your username and password");
+		            rd.forward(request, response); 
+				}else{
+					Child newChild = new Child(childUsername,childPassword,"Level 1",empire,100,0,0,0);
+					familyMgr.addChild(newChild);
+					response.sendRedirect("admin-member.jsp");
+				}
 			}
 			
 		}		

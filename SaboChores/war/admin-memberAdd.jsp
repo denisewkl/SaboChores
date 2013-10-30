@@ -26,6 +26,7 @@ function showform2(a)
 </script>		
 	
 	<!-- MAIN -->
+	<%String error=(String)request.getAttribute("msg"); %>
 	<div role="main" id="main">
 		<div class="wrapper">
 		<form action = "/memberManagementCheck" method = "post">
@@ -36,24 +37,32 @@ function showform2(a)
 						Child Username
 					</td>
 					<td>
-						Child password
+						<input type = "text" name = "childUsername" />
 					</td>
-				</tr>
-				
+				</tr>				
 				<tr>
 					<td>
-						<input type = "text" name = "childUsername" />
+						Child Password
 					</td>
 					<td>
 						<input type = "text" name = "childPassword" />
 					</td>
 				</tr>
 				
+				<%
+					if (error !=null) { %>
+						<tr>
+							<td colspan = 2><font color = "red"><%out.println(error); %></font></td>
+						</tr>
+						
+					<%}
+					%>
+					
 				<tr> 
 					<td>
 						<input type = "reset" value = "Clear" />
 					</td>
-					<td>
+					<td align = "right">
 						<input type = "submit" value = "Register Child" />
 					</td>
 				</tr>

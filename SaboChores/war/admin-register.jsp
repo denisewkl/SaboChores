@@ -8,6 +8,12 @@
 <head>
 	<meta charset="utf-8">
 	
+	<script>
+	function goBack()
+	  {
+	  window.history.back()
+	  }
+	</script>
 	
 	
 	<title>Sabo Chores</title>
@@ -61,10 +67,14 @@
 						
 						<p>
 							<label for="empire" >Empire</label>
-							<input name="empire"  id="empire" type="text" class="form-poshytip" title="Enter your empire" />
+							<input name="empire"  id="empire" type="text" class="form-poshytip" title="Enter your family name" />
 						</p>
 						
-						<p><input type="submit" value="Create" id="submit" /> </p>
+						<p>
+							<input type="button" value="Back" onclick="goBack()">
+							&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+							<input type="submit" value="Create" id="submit" />
+						</p>
 					</fieldset>
 					
 				</form>

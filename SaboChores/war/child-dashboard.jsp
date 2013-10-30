@@ -17,44 +17,45 @@
 	 	
 	 	<tr>
 	 		<td width = "25%"><h5>Chores</h5></td>
-	 		<td width = "25%"><h5>Owner</h5></td>
+	 		<td width = "25%" align = "center"><h5>Points</h5></td>
 	 		<td width = "25%"><h5>Status</h5></td>
-	 		<td width = "25%"><h5>Points</h5></td>
+	 		<td width = "25%"><h5></h5></td>
 	 	</tr> 
 		
 	 	<% for (Chore c: allChoresToThisUser) { %>
 	 		<tr>
 			 	<td><%=c.getTaskDescription()%></td>
-			 	<td><%=c.getChoreTakenBy()%></td>
 			 	<% if (c.getChoreStatus().equalsIgnoreCase("Available")) { %>
 			 		<form method = "post" action = "/chorecheck"> 
-			 		<td><input type="submit" value="Available" id="submit" /></td>
-			 		<td><%= c.getChorePoints() %> </td>
-			 		
-			 		<input type = "hidden" name = "choreStatus" value = "Available" />
-			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
+				 		<td align = "center"><%= c.getChorePoints() %> </td>
+				 		<td align = "center">Available</td>
+				 		<td align = "center"><input type="submit" value="Start" id="submit" /></td>
+				 		<input type = "hidden" name = "choreStatus" value = "Available" />
+				 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } else if (c.getChoreStatus().equalsIgnoreCase("In-Progress")) {%>
-			 		<form method = "post" action = "/chorecheck"> 
-			 		<td><input type="submit" value="In-Progress" id="submit" /></td>
-			 		<td><%= c.getChorePoints() %> </td>
-			 		<input type = "hidden" name = "choreStatus" value = "In-Progress" />
-			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
+			 		<form method = "post" action = "/chorecheck">
+				 		<td align = "center"><%= c.getChorePoints() %> </td>
+				 		<td align = "center">In-Progress</td>
+				 		<td align = "center"><input type="submit" value="Complete" id="submit" /></td>
+				 		<input type = "hidden" name = "choreStatus" value = "In-Progress" />
+				 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } else if (c.getChoreStatus().equalsIgnoreCase("Saboed"))  {%>
 			 		<form method = "post" action = "/chorecheck"> 
-			 		<td><input type="submit" value="Saboed by <%=c.getSaboBy()%>" id="submit" />		 		
-			 		</td>
-			 		<td><%= c.getChorePoints() %> </td>
-			 		<input type = "hidden" name = "choreStatus" value = "Saboed" />
-			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
+				 		<td align = "center"><%= c.getChorePoints() %> </td>
+				 		<td align = "center">Saboed by <%=c.getSaboBy()%></td>
+				 		<td align = "center"><input type="submit" value="Start" id="submit" /></td>
+				 		<input type = "hidden" name = "choreStatus" value = "Saboed" />
+				 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } else {%>
 			 		<form method = "post" action = ""> 
-			 		<td><input type="submit" value="Pending" id="submit" /></td>
-			 		<td><%= c.getChorePoints() %> </td>
-			 		<input type = "hidden" name = "choreStatus" value = "" />
-			 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
+				 		<td align = "center"><%= c.getChorePoints() %> </td>
+				 		<td align = "center">Pending</td>
+				 		<td align = "center">Parent approving</td>			 		
+				 		<input type = "hidden" name = "choreStatus" value = "" />
+				 		<input type = "hidden" name = "chore" value = "<%=c.getChoreID()%>" />
 			 		</form>
 			 	<% } %>
 		 	</tr>
@@ -81,15 +82,9 @@
 	 		<%
 			//if no family or chores to select from to sabo
 			if (currentChild.getMoneyTix() >= 1) { %>
-	 		<input type="submit" value="Exchange for $$" id="pop" />
-	 		
-	 		<%String error=(String)request.getAttribute("msg");
-				if (error != null) {
-					out.println(error);
-				}
-			%>
-				
+	 		<input type="submit" value="Exchange for $$" id="pop" />				
 	 		<%}%>
+			
 	 	</td>
 	 	</tr>
 	 	<tr>
@@ -116,9 +111,9 @@
 	<form id="overlay_form" style="display:none" action = "/exchangemoneycheck">
 		<h6>Exchange Tickets for $$</h6>
 		<label>How many tickets?</label><br>
-		<input type="number" name="moneyTix" id="points" min="0" max="20" step="1" value="0"><br />
+		<input type="number" name="moneyTix" id="points" min="0" max="20" step="1" value="1"><br />
 		
-		<input type="Submit" value="Buy" />
+		<input type="Submit" value="Exchange" />
 		<input type="button" value="Close" id="close"/>
 	</form>
 	<!-- pop form for sabo someone --> 

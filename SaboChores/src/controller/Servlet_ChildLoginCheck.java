@@ -55,7 +55,7 @@ public class Servlet_ChildLoginCheck extends HttpServlet{
 			//checking whether does the current child exist
 	        if (currentChild == null) {
 	        	RequestDispatcher rd = request.getRequestDispatcher("child-login.jsp");
-	            request.setAttribute("msg","No such child!");
+	            request.setAttribute("msg","*No such child!");
 	            rd.forward(request, response);
 	        } else {
 	        		        	
@@ -66,7 +66,7 @@ public class Servlet_ChildLoginCheck extends HttpServlet{
 	        	} else {
 	        		//System.out.println("Child, wrong credentials.");
 	        		RequestDispatcher rd = request.getRequestDispatcher("child-login.jsp");
-		            request.setAttribute("msg","Username or Password is incorrect!");
+		            request.setAttribute("msg","*Username or Password is incorrect!");
 		            rd.forward(request, response);
 	        	}
 	        

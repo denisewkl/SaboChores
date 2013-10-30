@@ -56,7 +56,7 @@ public class Servlet_SaboCheck  extends HttpServlet{
 			response.sendRedirect("child-dashboard.jsp");
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("child-dashboard.jsp");
-            request.setAttribute("msg","You do not have enough sabo tix!");
+            request.setAttribute("msg","*You do not have enough sabo tix!");
             rd.forward(request, response);
 		}
 		

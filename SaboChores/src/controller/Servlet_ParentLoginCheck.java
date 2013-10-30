@@ -57,7 +57,7 @@ public class Servlet_ParentLoginCheck extends HttpServlet{
 	        if (currentParent == null) {
 	        	//System.out.println("No such parent.");
 	        	RequestDispatcher rd = request.getRequestDispatcher("admin-login.jsp");
-	            request.setAttribute("msg","No such parent!");
+	            request.setAttribute("msg","*No such parent!");
 	            rd.forward(request, response);
 	        } else {
 	        	
@@ -68,7 +68,7 @@ public class Servlet_ParentLoginCheck extends HttpServlet{
 	        	} else {
 	        		//System.out.println("Parent, wrong credentials.");
 	        		RequestDispatcher rd = request.getRequestDispatcher("admin-login.jsp");
-		            request.setAttribute("msg","Username or password Invalid!");
+		            request.setAttribute("msg","*Username or password Invalid!");
 		            rd.forward(request, response);
 				
 	        	}

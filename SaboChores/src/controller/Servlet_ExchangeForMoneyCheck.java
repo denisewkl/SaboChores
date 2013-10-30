@@ -34,7 +34,7 @@ public class Servlet_ExchangeForMoneyCheck  extends HttpServlet{
 			response.sendRedirect("child-dashboard.jsp");
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("child-dashboard.jsp");
-            request.setAttribute("msg","Not enough money tix!");
+            request.setAttribute("msg","*Not enough money tix!");
             rd.forward(request, response);
 		}
 			

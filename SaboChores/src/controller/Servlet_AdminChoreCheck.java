@@ -38,7 +38,7 @@ public class Servlet_AdminChoreCheck  extends HttpServlet{
 		//if user is going to check not pending chores and delete it...
 		if(chore==null){
 			RequestDispatcher rd = request.getRequestDispatcher("admin-dashboard.jsp");
-            request.setAttribute("msg","Cannot delete task there are in progress!");
+            request.setAttribute("msg","*Please select at least 1 chore to approve.");
             rd.forward(request, response);
 		}
 		else if (choreCheckType.equalsIgnoreCase("notPendingChores")) {
@@ -56,9 +56,14 @@ public class Servlet_AdminChoreCheck  extends HttpServlet{
 							
 					if(getChore.getChoreID() == aInt && (getChore.getChoreStatus().equals("Available")) || getChore.getChoreStatus().equals("Pending")){
 						choreMgr.getAllChores().remove(choreMgr.getChore(aInt));
+						response.sendRedirect("admin-dashboard.jsp");
+					} else {
+						RequestDispatcher rd = request.getRequestDispatcher("admin-dashboard.jsp");
+			            request.setAttribute("msg","*In-progress or saboed chores cannot be deleted.");
+			            rd.forward(request, response);
 					}
 				}
-			response.sendRedirect("admin-dashboard.jsp");
+			
 			}
 			  
 		} else { //if user is going to approve the pending chores. 			

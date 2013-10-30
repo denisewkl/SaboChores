@@ -120,27 +120,33 @@ $(window).bind('resize',positionPopup);
 		<div class="wrapper cf">
 			<div id="logo">
 				<table border="1" width="100%" font size="8px";>
-				<tr>
-					<td>Welcome, <%=currentChild.getUserName()%>&nbsp</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>Title: <%=currentChild.getTitle()%>&nbsp</td>
-					<td>Points: <%=currentChild.getPoints()%></td>
-				</tr>
-				<tr>
-					<td>Household: <%=currentChild.getEmpire()%>&nbsp</td>
-					<td>Sabo Tix: <%=currentChild.getSaboTix()%></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>$ Tix: <%=currentChild.getMoneyTix()%></td>
-				</tr>
-				</table>
-				<p>
-					<a href="logoutChild.jsp">Logout</a>
-				</p>
-				
+					<form action = "logoutChild.jsp" method = "post">
+					
+					
+					
+					
+					
+					<tr>
+						<td>&nbsp</td>
+						<td>&nbsp</td>
+					</tr>
+					<tr>
+						<td align = "left">
+							Title: <%=currentChild.getTitle()%> <br />
+							Empire: <%=currentChild.getEmpire()%> <br />
+							Points: <%=currentChild.getPoints()%> <br />
+							$ Tix: <%=currentChild.getMoneyTix()%> <br />
+							Sabo Tix: <%=currentChild.getSaboTix()%> <br />
+						</td>
+						<td align = "right">Welcome, <%=currentChild.getUserName()%><br/> <input type = "submit" value = "Logout" /></td>
+					</tr>
+					<tr>
+						<td>&nbsp</td>
+						<td>&nbsp</td>
+					</tr>
+					
+					</form>
+				</table>		
 				
 			</div>
 		</div><!-- ENDS header wrapper -->

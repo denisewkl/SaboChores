@@ -120,11 +120,13 @@ $(window).bind('resize',positionPopup);
 									
 						<p>
 							<input type="submit" value="Login" id="submit" />
+							<font color = "red">
 							<%
 								if (error != null) {
 									out.println(error);
 								}
 							%> 
+							</font>
 						</p>
 					</fieldset>
 					

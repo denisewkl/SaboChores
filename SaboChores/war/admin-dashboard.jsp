@@ -43,11 +43,12 @@ function showform(a)
 				%>
 			 		<tr>
 					 	<td><input type="checkbox" name="chore" value='<%=c.getChoreID() %>'><%=c.getTaskDescription() %></td>
-					 	<td><input type="submit" name="status" value="To approve?"></td>
 					 	<td><%=c.getChorePoints() %> points</td>
 				 	</tr>
 		 		<%}%>
 		 	</table>
+	  		
+	  		<br /><input type="submit" name="status" value="To approve?">
 	  		  	
 	  	</form>
 	  	<p></p>
@@ -87,13 +88,15 @@ function showform(a)
 		  	<br>
 		  	PS: Cannot delete chores that are In-progress or Saboed.
 		  	<br>
+		   
+		   <font color = "red">
 		  	<%
 		  	String msg= (String)request.getAttribute("msg");
 		  	if(msg!=null){
-		  		
 		  		out.println(msg);
 		  	}
 		  	%>
+		  	</font>
 		  	
 		  	<div id="overlay_form" style="display:none">
 		  	<h6>Delete Chore</h6>

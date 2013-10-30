@@ -68,42 +68,34 @@ function toggle(Info) {
 
 	<!-- HEADER -->
 	<header>
-		<%
-		
-		
-	
-	
 
-		%>
 		<!-- header wrapper -->
 		<div class="wrapper cf">
 			<div id="logo">
 				<table border="1" width="100%" font size="8px";>
-				
-				<tr>
-				<td>&nbsp</td>
-				<td>&nbsp</td>
-				</tr>
-				<tr>
-				<td>&nbsp</td>
-				<td>&nbsp</td>
-				</tr>
-				<tr>
-				<td>Welcome, <%= currentParent.getUserName()%>&nbsp</td>
-				<td></td>
-				</tr>
-				<tr>
-				<td>Empire: <%= currentParent.getEmpire()%></td>
-				<td><a href="logout.jsp">Logout</a></td>
-				</tr>
-				<tr>
-				<td>&nbsp</td>
-				<td>&nbsp</td>
-				</tr>
-				<tr>
-				<td>&nbsp</td>
-				<td>&nbsp</td>
-				</tr>
+					<form action = "logout.jsp" method = "post">
+						<tr>
+							<td>&nbsp</td>
+							<td>&nbsp</td>
+						</tr>
+						<tr>
+							<td>
+								Empire: <%= currentParent.getEmpire()%><br />
+							</td>
+							<td>
+								Welcome, <%= currentParent.getUserName()%><br />
+								<input type = "submit" value = "Logout" />
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>&nbsp</td>
+							<td>&nbsp</td>
+						</tr>
+					</form>
 				</table>
 
 				
@@ -117,7 +109,7 @@ function toggle(Info) {
 			<div class="wrapper cf">
 				<ul id="nav" class="sf-menu">
 					<li class="current-menu-item"><a href="admin-dashboard.jsp">DASHBOARD<i><b></b></i></a></li>
-					<li><a href="admin-member.jsp">MEMBER MANAGEMENT<i><b></b></i></a></li>
+					<li><a href="admin-member.jsp">CHILD MANAGEMENT<i><b></b></i></a></li>
 					<li><a href="admin-rewards.jsp">VIEW CHILD REWARDS<i><b></b></i></a></li>
 					<li><a href="admin-faq.jsp">FAQ<i><b></b></i></a></li>				</ul>
 				<div id="combo-holder"></div>

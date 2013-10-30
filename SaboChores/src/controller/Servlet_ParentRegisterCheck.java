@@ -47,16 +47,16 @@ public class Servlet_ParentRegisterCheck  extends HttpServlet{
 		for (Parent b: allParents) {
 			if (b.getUserName().equalsIgnoreCase(username)) {
 				
-				msg="Username already exists!";
+				msg="*Username already exists!";
 				check=false;
 				
 				
 			}else if(b.getEmpire().equalsIgnoreCase(empire)) {
-				msg="Empire already exists!";
+				msg="*Empire already exists!";
 				check=false;
 				
 			}else if(username.equals("") || email.equals("") || password.equals("") || empire.equals("")){
-				msg="All fields must be filled!";
+				msg="*All fields must be filled!";
 				check=false;
 			}
 			}    	

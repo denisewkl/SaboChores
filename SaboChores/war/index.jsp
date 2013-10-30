@@ -40,7 +40,7 @@
 		<!-- header wrapper -->
 		<div class="wrapper cf">
 			<div id="logo">
-				<a href="index.html" ><img src="img/logo.png" alt="" /></a>
+				<img src="img/logo.png" alt="" />
 			</div>
 		</div><!-- ENDS header wrapper -->
 		

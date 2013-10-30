@@ -32,8 +32,9 @@ function showform2(a)
 	 		List<Child> al = familyMgr.getChildren(currentParent.getEmpire());
 			System.out.println("Size of the family: " + al.size());
 			String message="";
+			String error=(String)request.getAttribute("msg");
 	 	%>
-	 	<h2 class="heading" align="center">Member Management</h2>
+	 	<h2 class="heading" align="center">Child Management</h2>
 		<form onsubmit="" action="/memberManagementCheck">
 		 	
 		 	<table width="100%">
@@ -53,14 +54,23 @@ function showform2(a)
 		 	
 		 	</table>
 		 	
-		 	<p></p>
+		 	<p>
+		 		<br />
+		 		<font color = "red">
+				 	<%
+					if (error !=null) {
+						out.println(error);
+					}
+					%>
+				</font>
+			</p>
+			
 		 	<table width="100%">
 			 	<tr>
 			 		<td><input type="button" value="Delete" onclick="showform(1)"></td>
 			 	</tr>
 		  	</table>
-		  	
-		  
+
 			<div id="overlay_form" style="display:none">
 				<h6>Delete User</h6>
 				<label>Confirm Delete User?</label></br></br>

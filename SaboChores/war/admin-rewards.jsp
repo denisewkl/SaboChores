@@ -49,17 +49,19 @@ function showform(a)
 	 	<table width="100%">
 	 	<tr>
 	 	<td><input type="button" value="Back" onclick="goBack()"></td>
-	 	<td><input type="button" value="Confirm" onclick="showform(1)" /></td>
+	 	<td><input type="button" value="Reward" onclick="showform(1)" /></td>
 	 	</tr>
 	  	</table>
 	  	<br>
+	  	<font color = "red">
 	  	<%
-	  	String msg=(String)request.getAttribute("msg");
-	  	if(msg!=null){
-	  		out.println(msg);
+	  	String error=(String)request.getAttribute("msg");
+	  	if(error!=null){
+	  		out.println(error);
 	  		
 	  	}
 	  	%>
+	  	</font>
 	  	<div id="overlay_form" style="display:none">
 		<h6>Reward</h6>
 		<label>Confirm Reward Redemption?</label></br></br>

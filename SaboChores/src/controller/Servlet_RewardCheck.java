@@ -31,7 +31,7 @@ public class Servlet_RewardCheck  extends HttpServlet{
 		
 		if(user==null){
 			RequestDispatcher rd = request.getRequestDispatcher("admin-rewards.jsp");
-            request.setAttribute("msg","Please select at least one.");
+            request.setAttribute("msg","*Please select at least one.");
             rd.forward(request, response);
 		}
 		else if(user != null && choice.equals("Yes")) {
